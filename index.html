@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur d'Impots 2025 — Canada et Quebec</title>
+<meta name="description" content="Estimez vos impots federaux et provinciaux 2025 gratuitement. Calculateur detaille pour le Quebec et les 13 provinces canadiennes avec deductions, credits et cotisations.">
+<meta name="keywords" content="calculateur impots 2025, impot Quebec, impot Canada, declaration revenus, REER, RRQ, credit solidarite, prime au travail, taux marginal">
+<meta name="author" content="Mark Systems">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://impots-2025.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculateur d'Impots 2025 — Canada et Quebec">
+<meta property="og:description" content="Estimez vos impots federaux et provinciaux 2025 gratuitement. Quebec et 13 provinces canadiennes.">
+<meta property="og:url" content="https://impots-2025.vercel.app/">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Calculateur Impots 2025">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculateur d'Impots 2025 — Canada et Quebec">
+<meta name="twitter:description" content="Estimez vos impots federaux et provinciaux 2025 gratuitement.">
+<meta name="theme-color" content="#1e40af" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur d'Impots 2025",
+  "description": "Estimez vos impots federaux et provinciaux canadiens 2025 gratuitement.",
+  "url": "https://impots-2025.vercel.app/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
+  "inLanguage": "fr-CA"
+}
+</script>
+<style>
+:root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--shadow:0 4px 12px rgba(0,0,0,.08)}
+@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--shadow:0 4px 12px rgba(0,0,0,.3)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+h1{font-size:1.8rem;margin-bottom:.5rem;text-align:center}
+p.sub{color:var(--muted);margin-bottom:2.5rem;text-align:center;font-size:.95rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:700px;width:100%}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:.2s ease;box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-4px);border-color:#3b82f6}
+.card .emoji{font-size:3rem;margin-bottom:1rem}
+.card h2{font-size:1.2rem;margin-bottom:.5rem}
+.card p{font-size:.85rem;color:var(--muted);line-height:1.5}
+.card .tag{display:inline-block;margin-top:1rem;padding:.3rem .8rem;border-radius:99px;font-size:.75rem;font-weight:600;background:#dbeafe;color:#1e40af}
+.card.qc{border-color:#8b5cf6}
+.card.qc:hover{border-color:#7c3aed}
+.card.qc .tag{background:#ede9fe;color:#6d28d9}
+footer{margin-top:2.5rem;font-size:.8rem;color:var(--muted);text-align:center}
+@media(prefers-color-scheme:dark){.card .tag{background:#1e3a5f;color:#93c5fd}.card.qc .tag{background:#2e1065;color:#c4b5fd}}
+</style>
+</head>
+<body>
+<main>
+<h1>Calculateur d'Impots 2025</h1>
+<p class="sub">Choisissez votre version</p>
+<div class="grid">
+  <a href="quebec.html" class="card qc" aria-label="Calculateur optimise pour le Quebec">
+    <div class="emoji" aria-hidden="true">&#9878;</div>
+    <h2>Quebec uniquement</h2>
+    <p>Calcul detaille federal + Quebec avec credits specifiques QC (solidarite, prime au travail, RQAP, RRQ, abattement 16.5%)</p>
+    <span class="tag">Optimise pour le Quebec</span>
+  </a>
+  <a href="toutes-provinces.html" class="card" aria-label="Calculateur pour toutes les provinces canadiennes">
+    <div class="emoji" aria-hidden="true">&#127464;&#127462;</div>
+    <h2>Toutes les provinces</h2>
+    <p>13 provinces et territoires. Selectionnez votre province : AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT</p>
+    <span class="tag">Canada complet</span>
+  </a>
+</div>
+</main>
+<footer>Estimation a titre informatif seulement &mdash; Annee d'imposition 2025</footer>
+</body>
+</html>

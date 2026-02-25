@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://impots-2025.vercel.app/sitemap.xml

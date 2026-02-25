@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur d'Impots Quebec 2025 — Federal + Provincial</title>
+<meta name="description" content="Calculez vos impots Quebec 2025 etape par etape : federal, provincial, RRQ, RQAP, AE, credit solidarite, prime au travail, REER, deductions. Gratuit.">
+<meta name="keywords" content="impot Quebec 2025, calculateur impot QC, declaration revenus Quebec, RRQ, RQAP, credit solidarite, prime au travail, abattement Quebec, REER, taux marginal">
+<meta name="author" content="Mark Systems">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://impots-2025.vercel.app/quebec.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculateur d'Impots Quebec 2025">
+<meta property="og:description" content="Estimez vos impots federaux et Quebec 2025 : deductions, credits, cotisations sociales. Gratuit.">
+<meta property="og:url" content="https://impots-2025.vercel.app/quebec.html">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculateur d'Impots Quebec 2025">
+<meta name="twitter:description" content="Estimez vos impots federaux et Quebec 2025 gratuitement.">
+<meta name="theme-color" content="#1a56db" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur d'Impots Quebec 2025",
+  "description": "Calculez vos impots federaux et provinciaux Quebec 2025 avec deductions, credits et cotisations.",
+  "url": "https://impots-2025.vercel.app/quebec.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
+  "inLanguage": "fr-CA"
+}
+</script>
+<style>
+:root {
+  --primary: #1a56db;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
+  --accent: #059669;
+  --accent-light: #10b981;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0,0,0,.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: .2s ease;
+  --max-w: 780px;
+}
+@media(prefers-color-scheme:dark){
+  :root {
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --primary-dark: #2563eb;
+    --accent: #10b981;
+    --accent-light: #34d399;
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --bg-input: #334155;
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --shadow: 0 1px 3px rgba(0,0,0,.3);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,.4);
+  }
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+h1,h2,h3,h4{line-height:1.3;font-weight:700}
+a{color:var(--primary);text-decoration:none}
+
+/* Layout */
+.container{max-width:var(--max-w);margin:0 auto;padding:1rem}
+header{text-align:center;padding:2rem 1rem 1rem}
+header h1{font-size:1.75rem;color:var(--primary)}
+header p{color:var(--text-secondary);margin-top:.25rem;font-size:.95rem}
+.disclaimer{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.8rem;color:var(--text-secondary);margin:1rem auto;max-width:var(--max-w);text-align:center}
+
+/* Progress bar */
+.progress-bar{display:flex;align-items:center;justify-content:center;gap:.25rem;margin:1.5rem auto;max-width:var(--max-w);padding:0 1rem;flex-wrap:wrap}
+.progress-step{display:flex;align-items:center;gap:.25rem;font-size:.8rem;color:var(--text-muted);transition:var(--transition)}
+.progress-step .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;border:2px solid var(--border);background:var(--bg-card);transition:var(--transition)}
+.progress-step.active .num{background:var(--primary);color:#fff;border-color:var(--primary)}
+.progress-step.done .num{background:var(--accent);color:#fff;border-color:var(--accent)}
+.progress-step.active,.progress-step.done{color:var(--text)}
+.progress-step .label{display:none}
+@media(min-width:640px){.progress-step .label{display:inline}}
+.progress-line{width:24px;height:2px;background:var(--border);transition:var(--transition)}
+.progress-line.done{background:var(--accent)}
+
+/* Card */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem;margin:1rem auto;max-width:var(--max-w);animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card-title{font-size:1.35rem;margin-bottom:.25rem}
+.card-subtitle{color:var(--text-secondary);font-size:.9rem;margin-bottom:1.5rem}
+
+/* Form elements */
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-weight:600;margin-bottom:.35rem;font-size:.9rem}
+.form-group .hint{font-size:.8rem;color:var(--text-muted);margin-bottom:.35rem}
+input[type="text"],input[type="number"],select{width:100%;padding:.65rem .85rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-input);color:var(--text);font-size:.95rem;transition:var(--transition);font-family:inherit}
+input:focus,select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+input.error{border-color:var(--danger)}
+.error-msg{color:var(--danger);font-size:.8rem;margin-top:.25rem;display:none}
+input.error+.error-msg{display:block}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.form-row{grid-template-columns:1fr}}
+
+.checkbox-group{display:flex;align-items:center;gap:.5rem;margin:.5rem 0}
+.checkbox-group input[type="checkbox"]{width:18px;height:18px;accent-color:var(--primary)}
+.checkbox-group label{font-weight:400;margin:0;cursor:pointer}
+
+/* Buttons */
+.btn-row{display:flex;justify-content:space-between;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.5rem;border-radius:var(--radius-sm);font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:var(--transition);font-family:inherit;display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-secondary{background:var(--bg-input);color:var(--text);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--primary)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#047857}
+
+/* Info boxes */
+.info-box{padding:1rem;border-radius:var(--radius-sm);margin:1rem 0;font-size:.9rem;display:flex;gap:.75rem;align-items:flex-start}
+.info-box .icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
+.info-box.tip{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+.info-box.warn{background:#fffbeb;border:1px solid #fcd34d;color:#92400e}
+.info-box.alert{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
+.info-box.info{background:#eff6ff;border:1px solid #93c5fd;color:#1e40af}
+@media(prefers-color-scheme:dark){
+  .info-box.tip{background:#064e3b;border-color:#065f46;color:#a7f3d0}
+  .info-box.warn{background:#78350f;border-color:#92400e;color:#fcd34d}
+  .info-box.alert{background:#7f1d1d;border-color:#991b1b;color:#fca5a5}
+  .info-box.info{background:#1e3a5f;border-color:#1e40af;color:#93c5fd}
+}
+
+/* Checklist */
+.checklist{list-style:none;margin:1rem 0}
+.checklist li{padding:.5rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;font-size:.9rem}
+.checklist li:last-child{border-bottom:none}
+.checklist .check{color:var(--accent);font-weight:700}
+
+/* Results */
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:640px){.result-grid{grid-template-columns:1fr}}
+.result-card{background:var(--bg-input);border-radius:var(--radius-sm);padding:1rem;text-align:center}
+.result-card .value{font-size:1.5rem;font-weight:800;color:var(--primary)}
+.result-card .label{font-size:.8rem;color:var(--text-secondary);margin-top:.25rem}
+.result-card.highlight{background:var(--primary);color:#fff}
+.result-card.highlight .value{color:#fff}
+.result-card.highlight .label{color:rgba(255,255,255,.8)}
+
+.detail-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+.detail-table th,.detail-table td{padding:.5rem .75rem;text-align:left;border-bottom:1px solid var(--border)}
+.detail-table th{font-weight:600;color:var(--text-secondary);font-size:.8rem;text-transform:uppercase}
+.detail-table td:last-child{text-align:right;font-weight:600}
+.detail-table tr.total{font-weight:700;border-top:2px solid var(--text)}
+.detail-table tr.total td{padding-top:.75rem}
+
+/* Tags */
+.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600}
+.tag-green{background:#d1fae5;color:#065f46}
+.tag-yellow{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+@media(prefers-color-scheme:dark){
+  .tag-green{background:#064e3b;color:#6ee7b7}
+  .tag-yellow{background:#78350f;color:#fcd34d}
+  .tag-red{background:#7f1d1d;color:#fca5a5}
+}
+
+/* Sections collapsibles */
+.collapsible{border:1px solid var(--border);border-radius:var(--radius-sm);margin:.75rem 0;overflow:hidden}
+.collapsible-header{padding:.75rem 1rem;background:var(--bg-input);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.9rem;user-select:none}
+.collapsible-header:hover{background:var(--border)}
+.collapsible-header .arrow{transition:transform .2s}
+.collapsible.open .arrow{transform:rotate(180deg)}
+.collapsible-body{padding:1rem;display:none}
+.collapsible.open .collapsible-body{display:block}
+
+/* Charts */
+.chart-container{margin:1.5rem auto;text-align:center}
+.chart-container svg{max-width:100%}
+.chart-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:.75rem;font-size:.8rem}
+.chart-legend-item{display:flex;align-items:center;gap:.3rem}
+.chart-legend-item .swatch{width:12px;height:12px;border-radius:3px}
+
+/* Recommendation */
+.reco-box{padding:1.5rem;border-radius:var(--radius);text-align:center;margin:1.5rem 0}
+.reco-box.diy{background:#ecfdf5;border:2px solid var(--accent)}
+.reco-box.pro{background:#eff6ff;border:2px solid var(--primary)}
+.reco-box.complex{background:#fef2f2;border:2px solid var(--danger)}
+@media(prefers-color-scheme:dark){
+  .reco-box.diy{background:#064e3b;border-color:var(--accent)}
+  .reco-box.pro{background:#1e3a5f;border-color:var(--primary)}
+  .reco-box.complex{background:#7f1d1d;border-color:var(--danger)}
+}
+.reco-box h3{font-size:1.2rem;margin-bottom:.5rem}
+.reco-box p{font-size:.9rem;color:var(--text-secondary)}
+
+/* Score meter */
+.score-meter{width:100%;max-width:300px;margin:1rem auto;height:12px;background:var(--bg-input);border-radius:99px;overflow:hidden}
+.score-meter .fill{height:100%;border-radius:99px;transition:width .5s ease}
+.score-meter .fill.low{background:var(--accent)}
+.score-meter .fill.med{background:var(--warning)}
+.score-meter .fill.high{background:var(--danger)}
+
+/* Hidden steps */
+.step{display:none}
+.step.active{display:block}
+
+/* Footer */
+footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8rem}
+
+/* Print */
+@media print{
+  body{background:#fff;color:#000}
+  header,.progress-bar,.btn-row,.disclaimer,footer,.no-print{display:none!important}
+  .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;padding:1rem}
+  .step{display:block!important}
+  .step:not(#step4):not(#step5):not(#step6){display:none!important}
+  .result-card.highlight{background:#1a56db;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* Animations */
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Input group $ */
+.input-dollar{position:relative}
+.input-dollar::before{content:"$";position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-weight:600;pointer-events:none}
+.input-dollar input{padding-left:1.75rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Calculateur d'Impots Quebec 2025</h1>
+  <p>Estimation guidee de vos impots federal et provincial &mdash; Annee d'imposition 2025</p>
+</header>
+
+<div class="disclaimer">
+  Cet outil fournit une <strong>estimation</strong> a titre informatif seulement. Il ne constitue pas un avis fiscal professionnel. Consultez un comptable pour votre declaration officielle. Date limite : 30 avril 2026.
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Step 1: Profil -->
+<div class="step active" id="step1">
+<div class="card">
+  <h2 class="card-title">1. Votre profil</h2>
+  <p class="card-subtitle">Informations de base pour personnaliser le calcul</p>
+
+  <div class="form-group">
+    <label for="statut">Statut d'emploi</label>
+    <select id="statut">
+      <option value="">-- Selectionnez --</option>
+      <option value="salarie">Salarie(e)</option>
+      <option value="autonome">Travailleur(euse) autonome</option>
+      <option value="mixte">Mixte (salarie + autonome)</option>
+      <option value="retraite">Retraite(e)</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="revenuBrut">Revenu brut annuel</label>
+      <div class="input-dollar">
+        <input type="number" id="revenuBrut" placeholder="ex: 65000" min="0" step="100">
+      </div>
+      <div class="error-msg">Veuillez entrer un montant valide</div>
+    </div>
+    <div class="form-group" id="revenuAutonomeGroup" style="display:none">
+      <label for="revenuAutonome">Revenu autonome brut</label>
+      <div class="input-dollar">
+        <input type="number" id="revenuAutonome" placeholder="ex: 30000" min="0" step="100">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="situation">Situation familiale</label>
+      <select id="situation">
+        <option value="celibataire">Celibataire</option>
+        <option value="couple">En couple</option>
+        <option value="monoparental">Famille monoparentale</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="age">Age au 31 decembre 2025</label>
+      <input type="number" id="age" placeholder="ex: 35" min="16" max="120">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nbEnfants">Nombre d'enfants a charge</label>
+      <input type="number" id="nbEnfants" value="0" min="0" max="20">
+    </div>
+    <div class="form-group">
+      <label for="revenuConjoint">Revenu du conjoint (si applicable)</label>
+      <div class="input-dollar">
+        <input type="number" id="revenuConjoint" placeholder="0" min="0" step="100">
+      </div>
+    </div>
+  </div>
+
+  <div class="checkbox-group">
+    <input type="checkbox" id="handicap">
+    <label for="handicap">Personne en situation de handicap (credit d'impot)</label>
+  </div>
+
+  <div class="btn-row">
+    <div></div>
+    <button class="btn btn-primary" onclick="goToStep(2)">Suivant &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 2: Releves -->
+<div class="step" id="step2">
+<div class="card">
+  <h2 class="card-title">2. Vos releves fiscaux</h2>
+  <p class="card-subtitle">Documents requis selon votre profil pour l'annee 2025</p>
+
+  <div id="relevesContent"></div>
+
+  <div class="info-box tip">
+    <span class="icon">&#9989;</span>
+    <div>Rassemblez ces documents avant de produire votre declaration. La plupart sont disponibles en ligne sur Mon dossier (ARC) et Mon dossier (Revenu Quebec). Date limite : <strong>30 avril 2026</strong> (15 juin 2026 pour les travailleurs autonomes).</div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Retour</button>
+    <button class="btn btn-primary" onclick="goToStep(3)">Suivant &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 3: Deductions -->
+<div class="step" id="step3">
+<div class="card">
+  <h2 class="card-title">3. Deductions et credits</h2>
+  <p class="card-subtitle">Maximisez vos economies d'impot pour 2025</p>
+
+  <div class="collapsible open" id="collReer">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      REER et Epargne <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="reer">Cotisations REER</label>
+          <div class="hint">Maximum deductible : <span id="reerMax">--</span> (date limite : 2 mars 2026)</div>
+          <div class="input-dollar"><input type="number" id="reer" value="0" min="0" step="100"></div>
+        </div>
+        <div class="form-group">
+          <label for="celiapp">Cotisations CELIAPP</label>
+          <div class="hint">Maximum : 8 000 $ / annee</div>
+          <div class="input-dollar"><input type="number" id="celiapp" value="0" min="0" step="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" id="collBureau">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Bureau a domicile <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="checkbox-group">
+        <input type="checkbox" id="bureauDomicile" onchange="toggleBureau()">
+        <label for="bureauDomicile">J'ai travaille de la maison en 2025</label>
+      </div>
+      <div id="bureauDetails" style="display:none">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bureauMethode">Methode de calcul</label>
+            <select id="bureauMethode">
+              <option value="simplifiee">Methode simplifiee (2$/jour, max 500$)</option>
+              <option value="detaillee">Methode detaillee (frais reels)</option>
+            </select>
+          </div>
+          <div class="form-group" id="bureauJoursGroup">
+            <label for="bureauJours">Nombre de jours travailles a domicile</label>
+            <input type="number" id="bureauJours" value="0" min="0" max="366">
+          </div>
+        </div>
+        <div id="bureauDetailleGroup" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bureauLoyer">Part du loyer/interet hypothecaire</label>
+              <div class="input-dollar"><input type="number" id="bureauLoyer" value="0" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label for="bureauServices">Electricite, chauffage, internet</label>
+              <div class="input-dollar"><input type="number" id="bureauServices" value="0" min="0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box info">
+          <span class="icon">&#8505;</span>
+          <div>Vous avez besoin du formulaire <strong>T2200</strong> de votre employeur pour la methode detaillee.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" id="collMedical">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Frais medicaux <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="fraisMedicaux">Total des frais medicaux admissibles</label>
+        <div class="hint">Inclut : dentiste, lunettes, medicaments, physiotherapie, etc.</div>
+        <div class="input-dollar"><input type="number" id="fraisMedicaux" value="0" min="0" step="50"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" id="collDons">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Dons de bienfaisance <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="dons">Total des dons avec recus officiels</label>
+        <div class="input-dollar"><input type="number" id="dons" value="0" min="0" step="10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" id="collGarde">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Frais de garde <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="fraisGarde">Frais de garde d'enfants (net apres subventions)</label>
+        <div class="input-dollar"><input type="number" id="fraisGarde" value="0" min="0" step="100"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" id="collAutres">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Autres deductions <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cotSyndicale">Cotisations syndicales / professionnelles</label>
+          <div class="input-dollar"><input type="number" id="cotSyndicale" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="fraisDemenagement">Frais de demenagement</label>
+          <div class="hint">Si demenagement pour se rapprocher du travail (40km+)</div>
+          <div class="input-dollar"><input type="number" id="fraisDemenagement" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="interetsPretEtudiant">Interets sur pret etudiant</label>
+          <div class="input-dollar"><input type="number" id="interetsPretEtudiant" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="fraisScolarite">Frais de scolarite (T2202 / RL-8)</label>
+          <div class="input-dollar"><input type="number" id="fraisScolarite" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pensionAlimentaire">Pension alimentaire versee</label>
+          <div class="input-dollar"><input type="number" id="pensionAlimentaire" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="depensesAutonome">Depenses d'entreprise (autonome)</label>
+          <div class="input-dollar"><input type="number" id="depensesAutonome" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="autresDeductions">Autres deductions (ligne 20800 federal)</label>
+        <div class="input-dollar"><input type="number" id="autresDeductions" value="0" min="0"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(2)">&#8592; Retour</button>
+    <button class="btn btn-primary" onclick="goToStep(4)">Calculer &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 4: Estimation -->
+<div class="step" id="step4">
+<div class="card">
+  <h2 class="card-title">4. Estimation de vos impots</h2>
+  <p class="card-subtitle">Annee d'imposition 2025</p>
+  <div id="resultatsContent"></div>
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(3)">&#8592; Modifier</button>
+    <button class="btn btn-primary" onclick="goToStep(5)">Credits manques ? &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 5: Credits manques -->
+<div class="step" id="step5">
+<div class="card">
+  <h2 class="card-title">5. Credits et deductions a verifier</h2>
+  <p class="card-subtitle">Economies potentielles identifiees pour 2025</p>
+  <div id="creditsManquesContent"></div>
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(4)">&#8592; Resultats</button>
+    <button class="btn btn-primary" onclick="goToStep(6)">Recommandation &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 6: Recommandation -->
+<div class="step" id="step6">
+<div class="card">
+  <h2 class="card-title">6. Notre recommandation</h2>
+  <p class="card-subtitle">DIY ou professionnel?</p>
+  <div id="recoContent"></div>
+  <div class="btn-row no-print">
+    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Recommencer</button>
+    <button class="btn btn-accent" onclick="window.print()">&#128424; Imprimer / PDF</button>
+  </div>
+</div>
+</div>
+
+<footer>
+  Calculateur d'impots Quebec 2025 &mdash; Outil a titre informatif seulement<br>
+  Les calculs sont des estimations et ne remplacent pas un avis professionnel.
+</footer>
+
+<script>
+// ============================================================
+// DONNEES FISCALES 2025 — CANADA + QUEBEC
+// Sources : canada.ca, revenuquebec.ca (indexation 2.7% fed, 2.85% QC)
+// ============================================================
+const TAX = {
+  federal: {
+    // Premiere tranche : taux moyen 14.5% (15% jan-jun + 14% jul-dec 2025)
+    brackets: [
+      { min: 0, max: 57375, rate: 0.145 },
+      { min: 57375, max: 114750, rate: 0.205 },
+      { min: 114750, max: 177882, rate: 0.26 },
+      { min: 177882, max: 253414, rate: 0.29 },
+      { min: 253414, max: Infinity, rate: 0.33 }
+    ],
+    bpa: 16129,
+    bpaReductionThreshold: 177882,
+    bpaMinimum: 14538,
+    bpaHighIncomeThreshold: 253414,
+    canadaEmployment: 1471,
+    abatementQC: 0.165,
+    // AE taux Quebec (reduit grace au RQAP)
+    aeRate: 0.0131,
+    aeMax: 860.67,
+    aeMaxEarnings: 65700,
+    // Credits indexes 2025
+    ageAmount: 9028,
+    ageThreshold: 45522,
+    handicapAmount: 10138,
+    medicalThresholdCap: 2834
+  },
+  quebec: {
+    brackets: [
+      { min: 0, max: 53255, rate: 0.14 },
+      { min: 53255, max: 106495, rate: 0.19 },
+      { min: 106495, max: 129590, rate: 0.24 },
+      { min: 129590, max: Infinity, rate: 0.2575 }
+    ],
+    bpa: 18571,
+    personneSeule: 2128,
+    rqapEmployee: 0.00494,
+    rqapAutonome: 0.00878,
+    rqapMaxEarnings: 98000,
+    ageAmount: 3742,
+    handicapAmount: 4420
+  },
+  rrq: {
+    rate1: 0.064,
+    max1: 4339,       // (71300-3500)*0.064
+    exemption: 3500,
+    maxEarnings1: 71300,
+    rate2: 0.04,
+    max2: 396,         // (81200-71300)*0.04
+    maxEarnings2: 81200
+  },
+  reerMaxRate: 0.18,
+  reerAbsoluteMax: 32490
+};
+
+// ========== STATE ==========
+let currentStep = 1;
+const STEPS = [
+  { num: 1, label: 'Profil' },
+  { num: 2, label: 'Releves' },
+  { num: 3, label: 'Deductions' },
+  { num: 4, label: 'Estimation' },
+  { num: 5, label: 'Credits' },
+  { num: 6, label: 'Verdict' }
+];
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded', () => {
+  renderProgressBar();
+  setupListeners();
+});
+
+function setupListeners() {
+  document.getElementById('statut').addEventListener('change', function() {
+    document.getElementById('revenuAutonomeGroup').style.display =
+      (this.value === 'autonome' || this.value === 'mixte') ? '' : 'none';
+  });
+  document.getElementById('bureauMethode').addEventListener('change', function() {
+    document.getElementById('bureauJoursGroup').style.display = this.value === 'simplifiee' ? '' : 'none';
+    document.getElementById('bureauDetailleGroup').style.display = this.value === 'detaillee' ? '' : 'none';
+  });
+}
+
+// ========== NAVIGATION ==========
+function renderProgressBar() {
+  const bar = document.getElementById('progressBar');
+  let html = '';
+  STEPS.forEach((s, i) => {
+    const cls = s.num < currentStep ? 'done' : s.num === currentStep ? 'active' : '';
+    html += `<div class="progress-step ${cls}"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`;
+    if (i < STEPS.length - 1) {
+      html += `<div class="progress-line ${s.num < currentStep ? 'done' : ''}"></div>`;
+    }
+  });
+  bar.innerHTML = html;
+}
+
+function goToStep(n) {
+  if (n === 2 && currentStep === 1 && !validateStep1()) return;
+  if (n === 4 && currentStep === 3) calculateTaxes();
+  if (n === 5) generateMissedCredits();
+  if (n === 6) generateRecommendation();
+  if (n === 2) generateReleves();
+  if (n === 3) updateReerMax();
+
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  currentStep = n;
+  renderProgressBar();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ========== VALIDATION ==========
+function validateStep1() {
+  let valid = true;
+  const statut = document.getElementById('statut');
+  const revenu = document.getElementById('revenuBrut');
+  const age = document.getElementById('age');
+
+  if (!statut.value) { statut.classList.add('error'); valid = false; } else { statut.classList.remove('error'); }
+  if (!revenu.value || Number(revenu.value) < 0) { revenu.classList.add('error'); valid = false; } else { revenu.classList.remove('error'); }
+  if (!age.value || Number(age.value) < 16) { age.classList.add('error'); valid = false; } else { age.classList.remove('error'); }
+  return valid;
+}
+
+function getVal(id) { return Number(document.getElementById(id).value) || 0; }
+function getChecked(id) { return document.getElementById(id).checked; }
+function getSel(id) { return document.getElementById(id).value; }
+
+// ========== STEP 2: RELEVES ==========
+function generateReleves() {
+  const statut = getSel('statut');
+  const revenu = getVal('revenuBrut');
+  const items = [];
+
+  if (statut === 'salarie' || statut === 'mixte') {
+    items.push({ code: 'T4', desc: 'Etat de la remuneration payee', source: 'Employeur' });
+    items.push({ code: 'RL-1', desc: 'Revenus d\'emploi et revenus divers', source: 'Employeur' });
+  }
+  if (statut === 'autonome' || statut === 'mixte') {
+    items.push({ code: 'T2125', desc: 'Etat des resultats des activites d\'une entreprise', source: 'Vous-meme' });
+    items.push({ code: 'TP-80', desc: 'Revenus et depenses d\'entreprise (QC)', source: 'Vous-meme' });
+  }
+  if (statut === 'retraite') {
+    items.push({ code: 'T4A', desc: 'Revenus de pension/retraite', source: 'Administrateur de regime' });
+    items.push({ code: 'T4A(OAS)', desc: 'Pension de la Securite de la vieillesse', source: 'Service Canada' });
+    items.push({ code: 'T4A(P)', desc: 'Prestations du RPC/RRQ', source: 'Service Canada / RRQ' });
+    items.push({ code: 'RL-2', desc: 'Revenus de retraite et rentes (QC)', source: 'Administrateur' });
+  }
+  if (revenu > 1000) {
+    items.push({ code: 'T5 / RL-3', desc: 'Revenus de placements (interets, dividendes)', source: 'Institution financiere' });
+  }
+  items.push({ code: 'REER', desc: 'Recus de cotisation REER', source: 'Institution financiere' });
+  items.push({ code: 'RL-31', desc: 'Credit d\'impot pour solidarite (loyer)', source: 'Proprietaire / vous-meme' });
+
+  let html = '<ul class="checklist">';
+  items.forEach(it => {
+    html += `<li><span class="check">&#10003;</span> <strong>${it.code}</strong> &mdash; ${it.desc} <em style="color:var(--text-muted);font-size:.8rem">(${it.source})</em></li>`;
+  });
+  html += '</ul>';
+  document.getElementById('relevesContent').innerHTML = html;
+}
+
+// ========== STEP 3 HELPERS ==========
+function updateReerMax() {
+  const revenu = getVal('revenuBrut');
+  document.getElementById('reerMax').textContent = fmt(Math.min(revenu * TAX.reerMaxRate, TAX.reerAbsoluteMax));
+}
+
+function toggleCollapsible(header) { header.parentElement.classList.toggle('open'); }
+function toggleBureau() { document.getElementById('bureauDetails').style.display = getChecked('bureauDomicile') ? '' : 'none'; }
+
+// ========== FORMAT ==========
+function fmt(n) {
+  return new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
+}
+function fmtPct(n) { return (n * 100).toFixed(1) + ' %'; }
+
+// ========== MOTEUR DE CALCUL ==========
+function calcProgressive(income, brackets) {
+  let tax = 0;
+  for (const b of brackets) {
+    if (income <= b.min) break;
+    tax += (Math.min(income, b.max) - b.min) * b.rate;
+  }
+  return tax;
+}
+
+function calculateTaxes() {
+  const statut = getSel('statut');
+  const revenuBrut = getVal('revenuBrut');
+  const revenuAutonome = getVal('revenuAutonome');
+  const age = getVal('age');
+  const nbEnfants = getVal('nbEnfants');
+  const situation = getSel('situation');
+  const revenuConjoint = getVal('revenuConjoint');
+
+  const reer = getVal('reer');
+  const celiapp = Math.min(getVal('celiapp'), 8000);
+  const cotSyndicale = getVal('cotSyndicale');
+  const fraisDemenagement = getVal('fraisDemenagement');
+  const pensionAlimentaire = getVal('pensionAlimentaire');
+  const depensesAutonome = getVal('depensesAutonome');
+  const autresDeductions = getVal('autresDeductions');
+  const interetsPretEtudiant = getVal('interetsPretEtudiant');
+  const fraisScolarite = getVal('fraisScolarite');
+  const fraisMedicaux = getVal('fraisMedicaux');
+  const dons = getVal('dons');
+  const fraisGarde = getVal('fraisGarde');
+
+  // Bureau a domicile
+  let bureauDeduction = 0;
+  if (getChecked('bureauDomicile')) {
+    if (getSel('bureauMethode') === 'simplifiee') {
+      bureauDeduction = Math.min(getVal('bureauJours') * 2, 500);
+    } else {
+      bureauDeduction = getVal('bureauLoyer') + getVal('bureauServices');
+    }
+  }
+
+  // Revenus
+  const revNetAutonome = (statut === 'autonome') ? Math.max(revenuBrut - depensesAutonome, 0) :
+                          (statut === 'mixte') ? Math.max(revenuAutonome - depensesAutonome, 0) : 0;
+  const revenuEmploi = (statut === 'autonome') ? 0 :
+                        (statut === 'mixte') ? (revenuBrut - revenuAutonome) : revenuBrut;
+  const revenuTotal = (statut === 'mixte') ? (revenuEmploi + revNetAutonome) :
+                       (statut === 'autonome') ? revNetAutonome : revenuBrut;
+
+  // ===== COTISATIONS (calculees d'abord pour credits + deductions) =====
+  let ae = 0;
+  if (statut !== 'autonome' && statut !== 'retraite') {
+    ae = Math.min(revenuEmploi * TAX.federal.aeRate, TAX.federal.aeMax);
+  }
+
+  let rrq1 = 0, rrq2 = 0;
+  if (statut !== 'retraite') {
+    const rrqEarnings = Math.min(revenuTotal, TAX.rrq.maxEarnings1) - TAX.rrq.exemption;
+    rrq1 = Math.min(Math.max(rrqEarnings, 0) * TAX.rrq.rate1, TAX.rrq.max1);
+    if (statut === 'autonome') rrq1 *= 2;
+
+    const rrq2Earnings = Math.min(revenuTotal, TAX.rrq.maxEarnings2) - TAX.rrq.maxEarnings1;
+    rrq2 = Math.min(Math.max(rrq2Earnings, 0) * TAX.rrq.rate2, TAX.rrq.max2);
+    if (statut === 'autonome') rrq2 *= 2;
+  }
+
+  let rqap = 0;
+  if (statut === 'autonome') {
+    rqap = Math.min(revenuTotal, TAX.quebec.rqapMaxEarnings) * TAX.quebec.rqapAutonome;
+  } else if (statut !== 'retraite') {
+    rqap = Math.min(revenuTotal, TAX.quebec.rqapMaxEarnings) * TAX.quebec.rqapEmployee;
+  }
+
+  const totalCotisations = ae + rrq1 + rrq2 + rqap;
+  const rrq1Employe = (statut === 'autonome') ? rrq1 / 2 : rrq1;
+  const rrq2Employe = (statut === 'autonome') ? rrq2 / 2 : rrq2;
+
+  // Deduction part employeur (autonome)
+  let deductionAutonome = 0;
+  if (statut === 'autonome') {
+    deductionAutonome = rrq1 / 2 + rrq2 / 2 + rqap * 0.5;
+  }
+
+  const totalDeductions = reer + celiapp + cotSyndicale + fraisDemenagement +
+    pensionAlimentaire + autresDeductions + bureauDeduction + fraisGarde + deductionAutonome;
+  const revenuImposable = Math.max(revenuTotal - totalDeductions, 0);
+
+  // ===== IMPOT FEDERAL =====
+  let fedTaxBrut = calcProgressive(revenuImposable, TAX.federal.brackets);
+
+  // BPA (reduction progressive pour hauts revenus)
+  let bpa = TAX.federal.bpa;
+  if (revenuImposable > TAX.federal.bpaReductionThreshold) {
+    const ratio = (TAX.federal.bpa - TAX.federal.bpaMinimum) /
+                  (TAX.federal.bpaHighIncomeThreshold - TAX.federal.bpaReductionThreshold);
+    bpa = Math.max(TAX.federal.bpaMinimum,
+      TAX.federal.bpa - (revenuImposable - TAX.federal.bpaReductionThreshold) * ratio);
+  }
+
+  const fedCR = 0.15; // taux credit non-remboursable federal
+  let fedCredits = bpa * fedCR;
+
+  // Montant canadien pour emploi
+  if (statut === 'salarie' || statut === 'mixte') {
+    fedCredits += Math.min(revenuEmploi, TAX.federal.canadaEmployment) * fedCR;
+  }
+
+  // Credits sur cotisations sociales
+  fedCredits += ae * fedCR;
+  fedCredits += rrq1Employe * fedCR;
+  fedCredits += rrq2Employe * fedCR;
+  fedCredits += rqap * fedCR;
+
+  // Interets pret etudiant + scolarite
+  fedCredits += interetsPretEtudiant * fedCR;
+  fedCredits += fraisScolarite * fedCR;
+
+  // Frais medicaux
+  const medicalSeuil = Math.min(revenuImposable * 0.03, TAX.federal.medicalThresholdCap);
+  const medicalAdmissible = Math.max(fraisMedicaux - medicalSeuil, 0);
+  fedCredits += medicalAdmissible * fedCR;
+
+  // Dons
+  if (dons > 0) {
+    const donRate = revenuImposable > 253414 ? 0.33 : 0.29;
+    fedCredits += Math.min(dons, 200) * fedCR + Math.max(dons - 200, 0) * donRate;
+  }
+
+  // Age (65+)
+  if (age >= 65) {
+    const ageRed = Math.max((revenuImposable - TAX.federal.ageThreshold) * 0.15, 0);
+    fedCredits += Math.max(TAX.federal.ageAmount - ageRed, 0) * fedCR;
+  }
+
+  // Handicap
+  if (getChecked('handicap')) fedCredits += TAX.federal.handicapAmount * fedCR;
+
+  let fedTaxNet = Math.max(fedTaxBrut - fedCredits, 0);
+  const abatement = fedTaxNet * TAX.federal.abatementQC;
+  fedTaxNet = Math.max(fedTaxNet - abatement, 0);
+
+  // ===== IMPOT QUEBEC =====
+  let qcTaxBrut = calcProgressive(revenuImposable, TAX.quebec.brackets);
+
+  const qcCR = 0.14;
+  let qcCredits = TAX.quebec.bpa * qcCR;
+
+  if (situation === 'celibataire') qcCredits += TAX.quebec.personneSeule * qcCR;
+
+  // Credits cotisations QC
+  qcCredits += rrq1Employe * qcCR + rrq2Employe * qcCR + rqap * qcCR + ae * qcCR;
+
+  // Pret etudiant + scolarite QC
+  qcCredits += interetsPretEtudiant * qcCR;
+  qcCredits += fraisScolarite * 0.08;
+
+  // Medical QC (taux 20%)
+  const medSeuilQC = revenuImposable * 0.03; // QC: pas de plafond contrairement au federal
+  const medAdmQC = Math.max(fraisMedicaux - medSeuilQC, 0);
+  qcCredits += medAdmQC * 0.20;
+
+  // Dons QC
+  if (dons > 0) {
+    qcCredits += Math.min(dons, 200) * 0.20 + Math.max(dons - 200, 0) * 0.2575;
+  }
+
+  if (age >= 65) qcCredits += TAX.quebec.ageAmount * qcCR;
+  if (getChecked('handicap')) qcCredits += TAX.quebec.handicapAmount * qcCR;
+
+  let qcTaxNet = Math.max(qcTaxBrut - qcCredits, 0);
+
+  // ===== CREDITS SPECIFIQUES QC =====
+  let primeAuTravail = 0;
+  if (revenuTotal > 2400 && revenuTotal < 50000 && statut !== 'retraite') {
+    if (situation === 'celibataire') {
+      primeAuTravail = Math.min(Math.max((revenuTotal - 2400) * 0.09, 0), 1101);
+      if (revenuTotal > 16780) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 16780) * 0.10, 0);
+    } else {
+      primeAuTravail = Math.min(Math.max((revenuTotal - 3600) * 0.09, 0), 1738);
+      if (revenuTotal > 27410) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 27410) * 0.10, 0);
+    }
+  }
+
+  let creditSolidarite = 0;
+  if (revenuTotal < 60000) {
+    creditSolidarite = situation === 'celibataire' ? 1032 : 1236;
+    if (revenuTotal > 39000) creditSolidarite = Math.max(creditSolidarite - (revenuTotal - 39000) * 0.06, 0);
+  }
+
+  // ===== TOTAUX =====
+  const totalFederal = fedTaxNet;
+  const totalQuebec = Math.max(qcTaxNet - primeAuTravail, 0);
+  const totalImpots = totalFederal + totalQuebec;
+  const totalCharges = totalImpots + totalCotisations;
+  const tauxEffectif = revenuTotal > 0 ? totalCharges / revenuTotal : 0;
+  const revenuNet = revenuTotal - totalCharges;
+
+  let tauxMargFed = 0, tauxMargQC = 0;
+  for (const b of TAX.federal.brackets) { if (revenuImposable > b.min) tauxMargFed = b.rate; }
+  for (const b of TAX.quebec.brackets) { if (revenuImposable > b.min) tauxMargQC = b.rate; }
+  const tauxMargCombine = tauxMargFed * (1 - TAX.federal.abatementQC) + tauxMargQC;
+
+  // ===== AFFICHAGE =====
+  let html = '<div class="result-grid">';
+  html += `<div class="result-card highlight"><div class="value">${fmt(totalCharges)}</div><div class="label">Total impots + cotisations</div></div>`;
+  html += `<div class="result-card"><div class="value">${fmtPct(tauxEffectif)}</div><div class="label">Taux effectif</div></div>`;
+  html += `<div class="result-card"><div class="value">${fmt(revenuNet)}</div><div class="label">Revenu net estime</div></div>`;
+  html += `<div class="result-card"><div class="value">${fmtPct(tauxMargCombine)}</div><div class="label">Taux marginal combine</div></div>`;
+  html += '</div>';
+
+  html += '<table class="detail-table"><tr><th colspan="2">Detail du calcul</th></tr>';
+  html += `<tr><td>Revenu total</td><td>${fmt(revenuTotal)}</td></tr>`;
+  html += `<tr><td>Deductions totales</td><td>- ${fmt(totalDeductions)}</td></tr>`;
+  html += `<tr class="total"><td>Revenu imposable</td><td>${fmt(revenuImposable)}</td></tr></table>`;
+
+  html += '<table class="detail-table"><tr><th colspan="2">Impot federal</th></tr>';
+  html += `<tr><td>Impot brut</td><td>${fmt(fedTaxBrut)}</td></tr>`;
+  html += `<tr><td>Credits personnels</td><td>- ${fmt(fedCredits)}</td></tr>`;
+  html += `<tr><td>Abattement Quebec (16.5 %)</td><td>- ${fmt(abatement)}</td></tr>`;
+  html += `<tr class="total"><td>Impot federal net</td><td>${fmt(totalFederal)}</td></tr></table>`;
+
+  html += '<table class="detail-table"><tr><th colspan="2">Impot Quebec</th></tr>';
+  html += `<tr><td>Impot brut</td><td>${fmt(qcTaxBrut)}</td></tr>`;
+  html += `<tr><td>Credits personnels</td><td>- ${fmt(qcCredits)}</td></tr>`;
+  if (primeAuTravail > 0) html += `<tr><td>Prime au travail</td><td>- ${fmt(primeAuTravail)}</td></tr>`;
+  html += `<tr class="total"><td>Impot Quebec net</td><td>${fmt(totalQuebec)}</td></tr></table>`;
+
+  html += '<table class="detail-table"><tr><th colspan="2">Cotisations sociales</th></tr>';
+  if (ae > 0) html += `<tr><td>Assurance-emploi (AE)</td><td>${fmt(ae)}</td></tr>`;
+  html += `<tr><td>RRQ (base)</td><td>${fmt(rrq1)}</td></tr>`;
+  if (rrq2 > 0) html += `<tr><td>RRQ2 (supplementaire)</td><td>${fmt(rrq2)}</td></tr>`;
+  html += `<tr><td>RQAP</td><td>${fmt(rqap)}</td></tr>`;
+  html += `<tr class="total"><td>Total cotisations</td><td>${fmt(totalCotisations)}</td></tr></table>`;
+
+  if (creditSolidarite > 0) {
+    html += `<div class="info-box tip"><span class="icon">&#128176;</span><div><strong>Credit de solidarite estime :</strong> ${fmt(creditSolidarite)} / an (verse mensuellement par Revenu Quebec)</div></div>`;
+  }
+
+  html += renderPieChart(totalFederal, totalQuebec, totalCotisations, revenuNet);
+  html += renderBarChart(revenuTotal, totalDeductions, totalFederal, totalQuebec, totalCotisations, revenuNet);
+
+  document.getElementById('resultatsContent').innerHTML = html;
+
+  window._taxResults = {
+    revenuTotal, revenuImposable, totalDeductions, totalFederal, totalQuebec,
+    totalCotisations, totalCharges, revenuNet, tauxEffectif, tauxMargCombine,
+    statut, age, situation, nbEnfants, reer, dons, fraisMedicaux, fraisGarde,
+    bureauDeduction, depensesAutonome, deductionAutonome, revenuConjoint,
+    creditSolidarite, primeAuTravail, interetsPretEtudiant, fraisScolarite,
+    celiapp, medicalSeuil, medicalAdmissible
+  };
+}
+
+// ========== GRAPHIQUES SVG ==========
+function renderPieChart(fed, qc, cotis, net) {
+  const total = fed + qc + cotis + net;
+  if (total <= 0) return '';
+  const data = [
+    { value: fed, color: '#3b82f6', label: 'Federal' },
+    { value: qc, color: '#8b5cf6', label: 'Quebec' },
+    { value: cotis, color: '#f59e0b', label: 'Cotisations' },
+    { value: net, color: '#10b981', label: 'Revenu net' }
+  ];
+  const cx = 120, cy = 120, r = 100;
+  let angle = -Math.PI / 2;
+  let paths = '';
+  data.forEach(d => {
+    if (d.value <= 0) return;
+    const pct = d.value / total;
+    const a1 = angle, a2 = angle + pct * 2 * Math.PI;
+    const large = pct > 0.5 ? 1 : 0;
+    paths += `<path d="M${cx},${cy} L${cx + r * Math.cos(a1)},${cy + r * Math.sin(a1)} A${r},${r} 0 ${large},1 ${cx + r * Math.cos(a2)},${cy + r * Math.sin(a2)} Z" fill="${d.color}" opacity="0.85"/>`;
+    angle = a2;
+  });
+  let legend = '<div class="chart-legend">';
+  data.forEach(d => { if (d.value > 0) legend += `<div class="chart-legend-item"><div class="swatch" style="background:${d.color}"></div>${d.label}: ${fmt(d.value)}</div>`; });
+  legend += '</div>';
+  return `<div class="chart-container"><svg width="240" height="240" viewBox="0 0 240 240">${paths}</svg>${legend}</div>`;
+}
+
+function renderBarChart(revenu, deductions, fed, qc, cotis, net) {
+  if (revenu <= 0) return '';
+  const barW = 50, gap = 20, h = 200, pad = 40;
+  const items = [
+    { value: revenu, color: '#64748b', label: 'Revenu' },
+    { value: deductions, color: '#06b6d4', label: 'Deduc.' },
+    { value: fed, color: '#3b82f6', label: 'Fed.' },
+    { value: qc, color: '#8b5cf6', label: 'QC' },
+    { value: cotis, color: '#f59e0b', label: 'Cotis.' },
+    { value: net, color: '#10b981', label: 'Net' }
+  ];
+  const totalW = items.length * barW + (items.length - 1) * gap + pad * 2;
+  let bars = '';
+  items.forEach((it, i) => {
+    const barH = (it.value / revenu) * (h - 30);
+    const x = pad + i * (barW + gap), y = h - barH;
+    bars += `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" fill="${it.color}" rx="4" opacity="0.85"/>`;
+    bars += `<text x="${x + barW/2}" y="${y - 5}" text-anchor="middle" font-size="10" fill="currentColor">${fmt(it.value)}</text>`;
+    bars += `<text x="${x + barW/2}" y="${h + 15}" text-anchor="middle" font-size="10" fill="currentColor">${it.label}</text>`;
+  });
+  return `<div class="chart-container"><svg width="${totalW}" height="${h + 25}" viewBox="0 0 ${totalW} ${h + 25}">${bars}</svg></div>`;
+}
+
+// ========== STEP 5: CREDITS MANQUES ==========
+function generateMissedCredits() {
+  const r = window._taxResults;
+  if (!r) return;
+  const tips = [], alerts = [];
+
+  const reerMax = Math.min(r.revenuTotal * TAX.reerMaxRate, TAX.reerAbsoluteMax);
+  if (r.reer < reerMax * 0.5 && r.revenuTotal > 30000) {
+    const pot = reerMax - r.reer;
+    tips.push({ title: 'Cotisations REER non maximisees', desc: `Vous pourriez cotiser ${fmt(pot)} de plus et economiser ~${fmt(pot * r.tauxMargCombine)}. Date limite : 2 mars 2026.`, type: 'tip' });
+  }
+
+  if (r.celiapp === 0 && r.age < 65 && r.situation !== 'couple') {
+    tips.push({ title: 'CELIAPP', desc: 'Deduisez jusqu\'a 8 000 $/an pour l\'achat d\'une premiere propriete. Cumulable avec le REER.', type: 'info' });
+  }
+
+  if (r.bureauDeduction === 0 && r.statut === 'salarie') {
+    tips.push({ title: 'Bureau a domicile', desc: 'Si vous avez travaille de la maison, deduisez jusqu\'a 500 $ (methode simplifiee, 2 $/jour).', type: 'tip' });
+  }
+
+  if (r.fraisMedicaux > 0 && r.medicalAdmissible <= 0) {
+    alerts.push({ title: 'Frais medicaux sous le seuil', desc: `Vos frais de ${fmt(r.fraisMedicaux)} sont sous le seuil de ${fmt(r.medicalSeuil)}. Regroupez sur 12 mois ou declarez sous le conjoint avec le revenu le plus bas.`, type: 'warn' });
+  }
+
+  if (r.age >= 65 && r.situation === 'couple') {
+    tips.push({ title: 'Fractionnement de pension', desc: 'Transferez jusqu\'a 50 % de vos revenus de pension admissibles a votre conjoint.', type: 'tip' });
+  }
+
+  if (r.dons === 0 && r.revenuTotal > 50000) {
+    tips.push({ title: 'Dons de bienfaisance', desc: 'Credit de 29-33 % (fed.) + 25.75 % (QC) pour les dons > 200 $. Regroupez les recus du couple.', type: 'info' });
+  }
+
+  if (r.totalCharges > 3000 && r.statut === 'autonome') {
+    alerts.push({ title: 'Acomptes provisionnels', desc: `Avec ${fmt(r.totalCharges)} d'impot, des acomptes trimestriels sont probablement requis pour eviter les interets.`, type: 'warn' });
+  }
+
+  if (r.bureauDeduction > 500) {
+    alerts.push({ title: 'Formulaire T2200 requis', desc: 'La methode detaillee exige le T2200 signe par votre employeur.', type: 'alert' });
+  }
+
+  if (r.creditSolidarite > 0) {
+    tips.push({ title: 'Credit de solidarite', desc: `Inscrivez votre loyer (annexe D / RL-31) pour maximiser votre credit estime a ${fmt(r.creditSolidarite)}.`, type: 'tip' });
+  }
+
+  if (r.primeAuTravail > 0) {
+    tips.push({ title: 'Prime au travail', desc: `Admissible a ~${fmt(r.primeAuTravail)}. Remplissez l'annexe P.`, type: 'tip' });
+  }
+
+  if (r.nbEnfants > 0 && r.fraisGarde === 0) {
+    tips.push({ title: 'Frais de garde', desc: 'Vous avez des enfants a charge mais aucun frais de garde declare. Verifiez camps de jour, garderie, etc.', type: 'info' });
+  }
+
+  if (r.interetsPretEtudiant === 0 && r.age < 35) {
+    tips.push({ title: 'Interets pret etudiant', desc: 'Les interets sur pret etudiant gouvernemental donnent un credit non remboursable.', type: 'info' });
+  }
+
+  let html = '';
+  if (tips.length === 0 && alerts.length === 0) {
+    html = '<div class="info-box tip"><span class="icon">&#127881;</span><div><strong>Excellent!</strong> Aucune deduction manquee evidente.</div></div>';
+  } else {
+    if (tips.length > 0) {
+      html += '<h3 style="margin:1rem 0 .5rem">Economies potentielles</h3>';
+      tips.forEach(t => { html += `<div class="info-box ${t.type}"><span class="icon">${t.type === 'tip' ? '&#128161;' : '&#8505;'}</span><div><strong>${t.title}</strong><br>${t.desc}</div></div>`; });
+    }
+    if (alerts.length > 0) {
+      html += '<h3 style="margin:1rem 0 .5rem">Alertes</h3>';
+      alerts.forEach(a => { html += `<div class="info-box ${a.type}"><span class="icon">&#9888;</span><div><strong>${a.title}</strong><br>${a.desc}</div></div>`; });
+    }
+  }
+  document.getElementById('creditsManquesContent').innerHTML = html;
+}
+
+// ========== STEP 6: RECOMMANDATION ==========
+function generateRecommendation() {
+  const r = window._taxResults;
+  if (!r) return;
+
+  let score = 0;
+  const factors = [];
+  if (r.statut === 'autonome') { score += 35; factors.push('Travailleur autonome'); }
+  if (r.statut === 'mixte') { score += 25; factors.push('Revenus mixtes'); }
+  if (r.revenuTotal > 150000) { score += 15; factors.push('Revenu > 150 000 $'); }
+  else if (r.revenuTotal > 100000) { score += 8; factors.push('Revenu > 100 000 $'); }
+  if (r.depensesAutonome > 10000) { score += 10; factors.push('Depenses d\'entreprise importantes'); }
+  if (r.situation === 'couple' && r.revenuConjoint > 0) { score += 5; factors.push('Couple deux revenus'); }
+  if (r.nbEnfants > 0) { score += 5; factors.push('Enfants a charge'); }
+  if (r.dons > 5000) { score += 5; factors.push('Dons importants'); }
+  if (r.bureauDeduction > 500) { score += 5; factors.push('Bureau detaille'); }
+  if (r.fraisMedicaux > 5000) { score += 5; factors.push('Frais medicaux importants'); }
+  if (r.age >= 65) { score += 10; factors.push('Retraite (credits, fractionnement)'); }
+  score = Math.min(score, 100);
+
+  const level = score < 30 ? 'low' : score < 60 ? 'med' : 'high';
+  const levelLabel = score < 30 ? 'Simple' : score < 60 ? 'Modere' : 'Complexe';
+  const tagClass = score < 30 ? 'tag-green' : score < 60 ? 'tag-yellow' : 'tag-red';
+
+  let html = `<div style="text-align:center;margin:1rem 0"><span class="tag ${tagClass}">${levelLabel} — ${score}/100</span></div>`;
+  html += `<div class="score-meter"><div class="fill ${level}" style="width:${score}%"></div></div>`;
+
+  if (factors.length > 0) {
+    html += '<h4 style="margin:1.5rem 0 .5rem">Facteurs de complexite</h4><ul class="checklist">';
+    factors.forEach(f => html += `<li><span class="check">&#9679;</span> ${f}</li>`);
+    html += '</ul>';
+  }
+
+  if (score < 30) {
+    html += '<div class="reco-box diy"><h3>&#9989; Faites-le vous-meme</h3><p>Situation simple. Utilisez <strong>Wealthsimple Impot</strong> (gratuit) ou <strong>TurboImpot gratuit</strong>.</p></div>';
+  } else if (score < 60) {
+    html += '<div class="reco-box pro"><h3>&#128220; Logiciel recommande</h3><p>Situation moderee. Un logiciel payant (<strong>TurboImpot, H&R Block</strong>) suffit, mais un comptable optimiserait davantage.</p></div>';
+  } else {
+    html += '<div class="reco-box complex"><h3>&#128188; Comptable recommande</h3><p>Situation complexe. Un comptable professionnel peut vous faire economiser significativement.</p></div>';
+  }
+
+  html += '<div class="info-box info"><span class="icon">&#128176;</span><div><strong>Cout moyen au Quebec :</strong> Simple 50-100 $ | Autonome 150-400 $ | Complexe 300-800 $</div></div>';
+
+  html += '<h4 style="margin:1.5rem 0 .5rem">Resume — Annee d\'imposition 2025</h4>';
+  html += '<table class="detail-table">';
+  html += `<tr><td>Revenu total</td><td>${fmt(r.revenuTotal)}</td></tr>`;
+  html += `<tr><td>Impot federal</td><td>${fmt(r.totalFederal)}</td></tr>`;
+  html += `<tr><td>Impot Quebec</td><td>${fmt(r.totalQuebec)}</td></tr>`;
+  html += `<tr><td>Cotisations sociales</td><td>${fmt(r.totalCotisations)}</td></tr>`;
+  html += `<tr class="total"><td>Total</td><td>${fmt(r.totalCharges)}</td></tr>`;
+  html += `<tr><td>Taux effectif</td><td>${fmtPct(r.tauxEffectif)}</td></tr>`;
+  html += `<tr><td>Revenu net</td><td>${fmt(r.revenuNet)}</td></tr>`;
+  html += '</table>';
+
+  document.getElementById('recoContent').innerHTML = html;
+}
+</script>
+</body>
+</html>

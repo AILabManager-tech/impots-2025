@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur d'Impots Canada 2025 — Toutes les provinces</title>
+<meta name="description" content="Calculez vos impots 2025 pour les 13 provinces et territoires du Canada. Federal + provincial, CPP/QPP, AE, deductions, credits. Gratuit.">
+<meta name="keywords" content="calculateur impot Canada 2025, impot Ontario, impot Alberta, impot Colombie-Britannique, CPP, QPP, declaration revenus Canada, toutes provinces">
+<meta name="author" content="Mark Systems">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://impots-2025.vercel.app/toutes-provinces.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculateur d'Impots Canada 2025 — Toutes les provinces">
+<meta property="og:description" content="Estimez vos impots 2025 pour les 13 provinces et territoires canadiens. Gratuit.">
+<meta property="og:url" content="https://impots-2025.vercel.app/toutes-provinces.html">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculateur d'Impots Canada 2025">
+<meta name="twitter:description" content="Estimez vos impots 2025 pour toutes les provinces canadiennes.">
+<meta name="theme-color" content="#b91c1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur d'Impots Canada 2025",
+  "description": "Calculez vos impots federaux et provinciaux 2025 pour les 13 provinces et territoires canadiens.",
+  "url": "https://impots-2025.vercel.app/toutes-provinces.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
+  "inLanguage": "fr-CA"
+}
+</script>
+<style>
+:root {
+  --primary: #b91c1c;
+  --primary-light: #dc2626;
+  --primary-dark: #991b1b;
+  --accent: #059669;
+  --accent-light: #10b981;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0,0,0,.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: .2s ease;
+  --max-w: 780px;
+}
+@media(prefers-color-scheme:dark){
+  :root {
+    --primary: #ef4444;
+    --primary-light: #f87171;
+    --primary-dark: #dc2626;
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --bg-input: #334155;
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: #334155;
+    --shadow: 0 1px 3px rgba(0,0,0,.3);
+  }
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+h1,h2,h3,h4{line-height:1.3;font-weight:700}
+a{color:var(--primary);text-decoration:none}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:1rem}
+header{text-align:center;padding:2rem 1rem 1rem}
+header h1{font-size:1.75rem;color:var(--primary)}
+header p{color:var(--text-secondary);margin-top:.25rem;font-size:.95rem}
+.disclaimer{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.8rem;color:var(--text-secondary);margin:1rem auto;max-width:var(--max-w);text-align:center}
+
+.progress-bar{display:flex;align-items:center;justify-content:center;gap:.25rem;margin:1.5rem auto;max-width:var(--max-w);padding:0 1rem;flex-wrap:wrap}
+.progress-step{display:flex;align-items:center;gap:.25rem;font-size:.8rem;color:var(--text-muted);transition:var(--transition)}
+.progress-step .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;border:2px solid var(--border);background:var(--bg-card);transition:var(--transition)}
+.progress-step.active .num{background:var(--primary);color:#fff;border-color:var(--primary)}
+.progress-step.done .num{background:var(--accent);color:#fff;border-color:var(--accent)}
+.progress-step.active,.progress-step.done{color:var(--text)}
+.progress-step .label{display:none}
+@media(min-width:640px){.progress-step .label{display:inline}}
+.progress-line{width:24px;height:2px;background:var(--border);transition:var(--transition)}
+.progress-line.done{background:var(--accent)}
+
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem;margin:1rem auto;max-width:var(--max-w);animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card-title{font-size:1.35rem;margin-bottom:.25rem}
+.card-subtitle{color:var(--text-secondary);font-size:.9rem;margin-bottom:1.5rem}
+
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-weight:600;margin-bottom:.35rem;font-size:.9rem}
+.form-group .hint{font-size:.8rem;color:var(--text-muted);margin-bottom:.35rem}
+input[type="text"],input[type="number"],select{width:100%;padding:.65rem .85rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-input);color:var(--text);font-size:.95rem;transition:var(--transition);font-family:inherit}
+input:focus,select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(239,68,68,.15)}
+input.error{border-color:var(--danger)}
+.error-msg{color:var(--danger);font-size:.8rem;margin-top:.25rem;display:none}
+input.error+.error-msg{display:block}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.form-row{grid-template-columns:1fr}}
+
+.checkbox-group{display:flex;align-items:center;gap:.5rem;margin:.5rem 0}
+.checkbox-group input[type="checkbox"]{width:18px;height:18px;accent-color:var(--primary)}
+.checkbox-group label{font-weight:400;margin:0;cursor:pointer}
+
+.btn-row{display:flex;justify-content:space-between;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.5rem;border-radius:var(--radius-sm);font-size:.95rem;font-weight:600;cursor:pointer;border:none;transition:var(--transition);font-family:inherit;display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-secondary{background:var(--bg-input);color:var(--text);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--primary)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#047857}
+
+.info-box{padding:1rem;border-radius:var(--radius-sm);margin:1rem 0;font-size:.9rem;display:flex;gap:.75rem;align-items:flex-start}
+.info-box .icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
+.info-box.tip{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+.info-box.warn{background:#fffbeb;border:1px solid #fcd34d;color:#92400e}
+.info-box.alert{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
+.info-box.info{background:#eff6ff;border:1px solid #93c5fd;color:#1e40af}
+@media(prefers-color-scheme:dark){
+  .info-box.tip{background:#064e3b;border-color:#065f46;color:#a7f3d0}
+  .info-box.warn{background:#78350f;border-color:#92400e;color:#fcd34d}
+  .info-box.alert{background:#7f1d1d;border-color:#991b1b;color:#fca5a5}
+  .info-box.info{background:#1e3a5f;border-color:#1e40af;color:#93c5fd}
+}
+
+.checklist{list-style:none;margin:1rem 0}
+.checklist li{padding:.5rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;font-size:.9rem}
+.checklist li:last-child{border-bottom:none}
+.checklist .check{color:var(--accent);font-weight:700}
+
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:640px){.result-grid{grid-template-columns:1fr}}
+.result-card{background:var(--bg-input);border-radius:var(--radius-sm);padding:1rem;text-align:center}
+.result-card .value{font-size:1.5rem;font-weight:800;color:var(--primary)}
+.result-card .label{font-size:.8rem;color:var(--text-secondary);margin-top:.25rem}
+.result-card.highlight{background:var(--primary);color:#fff}
+.result-card.highlight .value{color:#fff}
+.result-card.highlight .label{color:rgba(255,255,255,.8)}
+
+.detail-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+.detail-table th,.detail-table td{padding:.5rem .75rem;text-align:left;border-bottom:1px solid var(--border)}
+.detail-table th{font-weight:600;color:var(--text-secondary);font-size:.8rem;text-transform:uppercase}
+.detail-table td:last-child{text-align:right;font-weight:600}
+.detail-table tr.total{font-weight:700;border-top:2px solid var(--text)}
+.detail-table tr.total td{padding-top:.75rem}
+
+.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600}
+.tag-green{background:#d1fae5;color:#065f46}
+.tag-yellow{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+@media(prefers-color-scheme:dark){
+  .tag-green{background:#064e3b;color:#6ee7b7}
+  .tag-yellow{background:#78350f;color:#fcd34d}
+  .tag-red{background:#7f1d1d;color:#fca5a5}
+}
+
+.collapsible{border:1px solid var(--border);border-radius:var(--radius-sm);margin:.75rem 0;overflow:hidden}
+.collapsible-header{padding:.75rem 1rem;background:var(--bg-input);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.9rem;user-select:none}
+.collapsible-header:hover{background:var(--border)}
+.collapsible-header .arrow{transition:transform .2s}
+.collapsible.open .arrow{transform:rotate(180deg)}
+.collapsible-body{padding:1rem;display:none}
+.collapsible.open .collapsible-body{display:block}
+
+.chart-container{margin:1.5rem auto;text-align:center}
+.chart-container svg{max-width:100%}
+.chart-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:.75rem;font-size:.8rem}
+.chart-legend-item{display:flex;align-items:center;gap:.3rem}
+.chart-legend-item .swatch{width:12px;height:12px;border-radius:3px}
+
+.reco-box{padding:1.5rem;border-radius:var(--radius);text-align:center;margin:1.5rem 0}
+.reco-box.diy{background:#ecfdf5;border:2px solid var(--accent)}
+.reco-box.pro{background:#eff6ff;border:2px solid #3b82f6}
+.reco-box.complex{background:#fef2f2;border:2px solid var(--danger)}
+@media(prefers-color-scheme:dark){
+  .reco-box.diy{background:#064e3b}
+  .reco-box.pro{background:#1e3a5f}
+  .reco-box.complex{background:#7f1d1d}
+}
+.reco-box h3{font-size:1.2rem;margin-bottom:.5rem}
+.reco-box p{font-size:.9rem;color:var(--text-secondary)}
+
+.score-meter{width:100%;max-width:300px;margin:1rem auto;height:12px;background:var(--bg-input);border-radius:99px;overflow:hidden}
+.score-meter .fill{height:100%;border-radius:99px;transition:width .5s ease}
+.score-meter .fill.low{background:var(--accent)}
+.score-meter .fill.med{background:var(--warning)}
+.score-meter .fill.high{background:var(--danger)}
+
+.step{display:none}
+.step.active{display:block}
+
+footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8rem}
+
+@media print{
+  body{background:#fff;color:#000}
+  header,.progress-bar,.btn-row,.disclaimer,footer,.no-print{display:none!important}
+  .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;padding:1rem}
+  .step{display:block!important}
+  .step:not(#step4):not(#step5):not(#step6){display:none!important}
+  .result-card.highlight{background:#b91c1c;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+.input-dollar{position:relative}
+.input-dollar::before{content:"$";position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-weight:600;pointer-events:none}
+.input-dollar input{padding-left:1.75rem}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#127464;&#127462; Calculateur d'Impots Canada 2025</h1>
+  <p>Federal + Provincial &mdash; Toutes les provinces et territoires</p>
+</header>
+
+<div class="disclaimer">
+  <strong>Estimation</strong> a titre informatif seulement. Ne constitue pas un avis fiscal. Consultez un professionnel. Date limite : 30 avril 2026.
+</div>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Step 1: Profil -->
+<div class="step active" id="step1">
+<div class="card">
+  <h2 class="card-title">1. Votre profil</h2>
+  <p class="card-subtitle">Informations de base pour 2025</p>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="province">Province / Territoire</label>
+      <select id="province">
+        <option value="">-- Selectionnez --</option>
+        <option value="AB">Alberta</option>
+        <option value="BC">Colombie-Britannique</option>
+        <option value="MB">Manitoba</option>
+        <option value="NB">Nouveau-Brunswick</option>
+        <option value="NL">Terre-Neuve-et-Labrador</option>
+        <option value="NS">Nouvelle-Ecosse</option>
+        <option value="NT">Territoires du Nord-Ouest</option>
+        <option value="NU">Nunavut</option>
+        <option value="ON">Ontario</option>
+        <option value="PE">Ile-du-Prince-Edouard</option>
+        <option value="QC">Quebec</option>
+        <option value="SK">Saskatchewan</option>
+        <option value="YT">Yukon</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="statut">Statut d'emploi</label>
+      <select id="statut">
+        <option value="">-- Selectionnez --</option>
+        <option value="salarie">Salarie(e)</option>
+        <option value="autonome">Travailleur(euse) autonome</option>
+        <option value="mixte">Mixte (salarie + autonome)</option>
+        <option value="retraite">Retraite(e)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="revenuBrut">Revenu brut annuel</label>
+      <div class="input-dollar"><input type="number" id="revenuBrut" placeholder="ex: 65000" min="0" step="100"></div>
+      <div class="error-msg">Veuillez entrer un montant valide</div>
+    </div>
+    <div class="form-group" id="revenuAutonomeGroup" style="display:none">
+      <label for="revenuAutonome">Revenu autonome brut</label>
+      <div class="input-dollar"><input type="number" id="revenuAutonome" placeholder="ex: 30000" min="0" step="100"></div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="situation">Situation familiale</label>
+      <select id="situation">
+        <option value="celibataire">Celibataire</option>
+        <option value="couple">En couple</option>
+        <option value="monoparental">Famille monoparentale</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="age">Age au 31 decembre 2025</label>
+      <input type="number" id="age" placeholder="ex: 35" min="16" max="120">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nbEnfants">Enfants a charge</label>
+      <input type="number" id="nbEnfants" value="0" min="0" max="20">
+    </div>
+    <div class="form-group">
+      <label for="revenuConjoint">Revenu du conjoint</label>
+      <div class="input-dollar"><input type="number" id="revenuConjoint" placeholder="0" min="0" step="100"></div>
+    </div>
+  </div>
+
+  <div class="checkbox-group">
+    <input type="checkbox" id="handicap">
+    <label for="handicap">Personne en situation de handicap</label>
+  </div>
+
+  <div class="btn-row">
+    <div></div>
+    <button class="btn btn-primary" onclick="goToStep(2)">Suivant &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 2: Releves -->
+<div class="step" id="step2">
+<div class="card">
+  <h2 class="card-title">2. Releves fiscaux requis</h2>
+  <p class="card-subtitle">Documents a rassembler pour 2025</p>
+  <div id="relevesContent"></div>
+  <div class="info-box tip">
+    <span class="icon">&#9989;</span>
+    <div>La plupart des releves sont disponibles sur <strong>Mon dossier ARC</strong>. Date limite : <strong>30 avril 2026</strong> (15 juin pour autonomes).</div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Retour</button>
+    <button class="btn btn-primary" onclick="goToStep(3)">Suivant &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 3: Deductions -->
+<div class="step" id="step3">
+<div class="card">
+  <h2 class="card-title">3. Deductions et credits</h2>
+  <p class="card-subtitle">Maximisez vos economies d'impot 2025</p>
+
+  <div class="collapsible open">
+    <div class="collapsible-header" onclick="toggleC(this)">REER et Epargne <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="reer">Cotisations REER</label>
+          <div class="hint">Max : <span id="reerMax">--</span> (limite : 2 mars 2026)</div>
+          <div class="input-dollar"><input type="number" id="reer" value="0" min="0" step="100"></div>
+        </div>
+        <div class="form-group">
+          <label for="celiapp">Cotisations CELIAPP</label>
+          <div class="hint">Max : 8 000 $ / an</div>
+          <div class="input-dollar"><input type="number" id="celiapp" value="0" min="0" step="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleC(this)">Bureau a domicile <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="checkbox-group">
+        <input type="checkbox" id="bureauDomicile" onchange="toggleBureau()">
+        <label for="bureauDomicile">J'ai travaille de la maison en 2025</label>
+      </div>
+      <div id="bureauDetails" style="display:none">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bureauMethode">Methode</label>
+            <select id="bureauMethode" onchange="toggleBureauMethode()">
+              <option value="simplifiee">Simplifiee (2$/jour, max 500$)</option>
+              <option value="detaillee">Detaillee (frais reels + T2200)</option>
+            </select>
+          </div>
+          <div class="form-group" id="bureauJoursGroup">
+            <label for="bureauJours">Jours travailles a domicile</label>
+            <input type="number" id="bureauJours" value="0" min="0" max="366">
+          </div>
+        </div>
+        <div id="bureauDetailleGroup" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bureauLoyer">Part loyer/hypotheque</label>
+              <div class="input-dollar"><input type="number" id="bureauLoyer" value="0" min="0"></div>
+            </div>
+            <div class="form-group">
+              <label for="bureauServices">Electricite, chauffage, internet</label>
+              <div class="input-dollar"><input type="number" id="bureauServices" value="0" min="0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleC(this)">Frais medicaux <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="fraisMedicaux">Total frais medicaux admissibles</label>
+        <div class="input-dollar"><input type="number" id="fraisMedicaux" value="0" min="0" step="50"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleC(this)">Dons de bienfaisance <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="dons">Total des dons (avec recus)</label>
+        <div class="input-dollar"><input type="number" id="dons" value="0" min="0" step="10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleC(this)">Frais de garde <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="form-group">
+        <label for="fraisGarde">Frais de garde (net apres subventions)</label>
+        <div class="input-dollar"><input type="number" id="fraisGarde" value="0" min="0" step="100"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleC(this)">Autres deductions <span class="arrow">&#9660;</span></div>
+    <div class="collapsible-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cotSyndicale">Cotisations syndicales</label>
+          <div class="input-dollar"><input type="number" id="cotSyndicale" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="fraisDemenagement">Frais de demenagement (40km+)</label>
+          <div class="input-dollar"><input type="number" id="fraisDemenagement" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="interetsPretEtudiant">Interets pret etudiant</label>
+          <div class="input-dollar"><input type="number" id="interetsPretEtudiant" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="fraisScolarite">Frais de scolarite (T2202)</label>
+          <div class="input-dollar"><input type="number" id="fraisScolarite" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pensionAlimentaire">Pension alimentaire versee</label>
+          <div class="input-dollar"><input type="number" id="pensionAlimentaire" value="0" min="0"></div>
+        </div>
+        <div class="form-group">
+          <label for="depensesAutonome">Depenses d'entreprise</label>
+          <div class="input-dollar"><input type="number" id="depensesAutonome" value="0" min="0"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="autresDeductions">Autres deductions</label>
+        <div class="input-dollar"><input type="number" id="autresDeductions" value="0" min="0"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(2)">&#8592; Retour</button>
+    <button class="btn btn-primary" onclick="goToStep(4)">Calculer &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 4 -->
+<div class="step" id="step4">
+<div class="card">
+  <h2 class="card-title">4. Estimation de vos impots</h2>
+  <p class="card-subtitle">Annee d'imposition 2025</p>
+  <div id="resultatsContent"></div>
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(3)">&#8592; Modifier</button>
+    <button class="btn btn-primary" onclick="goToStep(5)">Credits manques ? &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 5 -->
+<div class="step" id="step5">
+<div class="card">
+  <h2 class="card-title">5. Credits et deductions a verifier</h2>
+  <p class="card-subtitle">Economies potentielles 2025</p>
+  <div id="creditsManquesContent"></div>
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goToStep(4)">&#8592; Resultats</button>
+    <button class="btn btn-primary" onclick="goToStep(6)">Recommandation &#8594;</button>
+  </div>
+</div>
+</div>
+
+<!-- Step 6 -->
+<div class="step" id="step6">
+<div class="card">
+  <h2 class="card-title">6. Notre recommandation</h2>
+  <p class="card-subtitle">DIY ou professionnel?</p>
+  <div id="recoContent"></div>
+  <div class="btn-row no-print">
+    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Recommencer</button>
+    <button class="btn btn-accent" onclick="window.print()">&#128424; Imprimer / PDF</button>
+  </div>
+</div>
+</div>
+
+<footer>Calculateur d'impots Canada 2025 &mdash; Estimation a titre informatif seulement.</footer>
+
+<script>
+// ============================================================
+// DONNEES FISCALES 2025 — TOUTES PROVINCES & TERRITOIRES
+// Sources : canada.ca, taxtips.ca, sites provinciaux officiels
+// ============================================================
+
+const PROV = {
+  AB: {
+    name: 'Alberta',
+    brackets: [{min:0,max:60000,rate:.08},{min:60000,max:151234,rate:.10},{min:151234,max:181481,rate:.12},{min:181481,max:241974,rate:.13},{min:241974,max:362961,rate:.14},{min:362961,max:Infinity,rate:.15}],
+    bpa: 22323, ageAmount: 6221, ageThreshold: 46308, disabilityAmount: 17219
+  },
+  BC: {
+    name: 'Colombie-Britannique',
+    brackets: [{min:0,max:49279,rate:.0506},{min:49279,max:98560,rate:.077},{min:98560,max:113158,rate:.105},{min:113158,max:137407,rate:.1229},{min:137407,max:186306,rate:.147},{min:186306,max:259829,rate:.168},{min:259829,max:Infinity,rate:.205}],
+    bpa: 12932, ageAmount: 5799, ageThreshold: 43169, disabilityAmount: 9699
+  },
+  MB: {
+    name: 'Manitoba',
+    brackets: [{min:0,max:47000,rate:.108},{min:47000,max:100000,rate:.1275},{min:100000,max:Infinity,rate:.174}],
+    bpa: 15780, ageAmount: 3728, ageThreshold: 27749, disabilityAmount: 6180
+  },
+  NB: {
+    name: 'Nouveau-Brunswick',
+    brackets: [{min:0,max:51306,rate:.094},{min:51306,max:102614,rate:.14},{min:102614,max:190060,rate:.16},{min:190060,max:Infinity,rate:.195}],
+    bpa: 13396, ageAmount: 6037, ageThreshold: 44945, disabilityAmount: 10010
+  },
+  NL: {
+    name: 'Terre-Neuve-et-Labrador',
+    brackets: [{min:0,max:44192,rate:.087},{min:44192,max:88382,rate:.145},{min:88382,max:157792,rate:.158},{min:157792,max:220910,rate:.178},{min:220910,max:282214,rate:.198},{min:282214,max:564429,rate:.208},{min:564429,max:1128858,rate:.213},{min:1128858,max:Infinity,rate:.218}],
+    bpa: 11067, ageAmount: 7064, ageThreshold: 45522, disabilityAmount: 7467
+  },
+  NS: {
+    name: 'Nouvelle-Ecosse',
+    brackets: [{min:0,max:30507,rate:.0879},{min:30507,max:61015,rate:.1495},{min:61015,max:95883,rate:.1667},{min:95883,max:154650,rate:.175},{min:154650,max:Infinity,rate:.21}],
+    bpa: 11744, ageAmount: 5734, ageThreshold: 30828, disabilityAmount: 7341
+  },
+  NT: {
+    name: 'Territoires du Nord-Ouest',
+    brackets: [{min:0,max:51964,rate:.059},{min:51964,max:103930,rate:.086},{min:103930,max:168967,rate:.122},{min:168967,max:Infinity,rate:.1405}],
+    bpa: 17842, ageAmount: 8727, ageThreshold: 45522, disabilityAmount: 14469
+  },
+  NU: {
+    name: 'Nunavut',
+    brackets: [{min:0,max:54707,rate:.04},{min:54707,max:109413,rate:.07},{min:109413,max:177881,rate:.09},{min:177881,max:Infinity,rate:.115}],
+    bpa: 19274, ageAmount: 12303, ageThreshold: 45522, disabilityAmount: 16405
+  },
+  ON: {
+    name: 'Ontario',
+    brackets: [{min:0,max:52886,rate:.0505},{min:52886,max:105775,rate:.0915},{min:105775,max:150000,rate:.1116},{min:150000,max:220000,rate:.1216},{min:220000,max:Infinity,rate:.1316}],
+    bpa: 12747, ageAmount: 6223, ageThreshold: 46330, disabilityAmount: 10298
+  },
+  PE: {
+    name: 'Ile-du-Prince-Edouard',
+    brackets: [{min:0,max:33328,rate:.095},{min:33328,max:64656,rate:.1347},{min:64656,max:105000,rate:.166},{min:105000,max:140000,rate:.1762},{min:140000,max:Infinity,rate:.19}],
+    bpa: 14650, ageAmount: 6510, ageThreshold: 45522, disabilityAmount: 6890
+  },
+  QC: {
+    name: 'Quebec',
+    brackets: [{min:0,max:53255,rate:.14},{min:53255,max:106495,rate:.19},{min:106495,max:129590,rate:.24},{min:129590,max:Infinity,rate:.2575}],
+    bpa: 18571, personneSeule: 2128, ageAmount: 3742, ageThreshold: 45522, disabilityAmount: 4420
+  },
+  SK: {
+    name: 'Saskatchewan',
+    brackets: [{min:0,max:53463,rate:.105},{min:53463,max:152750,rate:.125},{min:152750,max:Infinity,rate:.145}],
+    bpa: 19491, ageAmount: 5785, ageThreshold: 43066, disabilityAmount: 13986
+  },
+  YT: {
+    name: 'Yukon',
+    brackets: [{min:0,max:57375,rate:.064},{min:57375,max:114750,rate:.09},{min:114750,max:177882,rate:.109},{min:177882,max:253414,rate:.1293},{min:253414,max:500000,rate:.128},{min:500000,max:Infinity,rate:.15}],
+    bpa: 16129, ageAmount: 9028, ageThreshold: 45522, disabilityAmount: 10138
+  }
+};
+
+const FED = {
+  brackets: [
+    {min:0,max:57375,rate:.145},
+    {min:57375,max:114750,rate:.205},
+    {min:114750,max:177882,rate:.26},
+    {min:177882,max:253414,rate:.29},
+    {min:253414,max:Infinity,rate:.33}
+  ],
+  bpa: 16129,
+  bpaMin: 14538,
+  bpaThresholdLow: 177882,
+  bpaThresholdHigh: 253414,
+  canadaEmployment: 1471,
+  ageAmount: 9028,
+  ageThreshold: 45522,
+  handicapAmount: 10138,
+  medicalCap: 2834
+};
+
+const CPP = { rate: .0595, max: 4034.10, exemption: 3500, maxEarnings: 71300 };
+const QPP = { rate: .064, max: 4339.20, exemption: 3500, maxEarnings: 71300 };
+const CPP2 = { rate: .04, max: 396, maxEarnings: 81200 };
+const EI_REG = { rate: .0164, max: 1077.48, maxEarnings: 65700 };
+const EI_QC = { rate: .0131, max: 860.67, maxEarnings: 65700 };
+const RQAP = { employee: .00494, autonome: .00878, maxEarnings: 98000 };
+const REER = { rate: .18, absMax: 32490 };
+const QC_ABATEMENT = .165;
+
+// ========== STATE ==========
+let currentStep = 1;
+const STEPS = [{num:1,label:'Profil'},{num:2,label:'Releves'},{num:3,label:'Deductions'},{num:4,label:'Estimation'},{num:5,label:'Credits'},{num:6,label:'Verdict'}];
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProgress();
+  document.getElementById('statut').addEventListener('change', function() {
+    document.getElementById('revenuAutonomeGroup').style.display = (this.value==='autonome'||this.value==='mixte') ? '' : 'none';
+  });
+});
+
+function renderProgress() {
+  const bar = document.getElementById('progressBar');
+  let h = '';
+  STEPS.forEach((s,i) => {
+    const c = s.num < currentStep ? 'done' : s.num === currentStep ? 'active' : '';
+    h += `<div class="progress-step ${c}"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`;
+    if (i < STEPS.length-1) h += `<div class="progress-line ${s.num<currentStep?'done':''}"></div>`;
+  });
+  bar.innerHTML = h;
+}
+
+function goToStep(n) {
+  if (n===2 && currentStep===1 && !validate1()) return;
+  if (n===4 && currentStep===3) calculate();
+  if (n===5) genCredits();
+  if (n===6) genReco();
+  if (n===2) genReleves();
+  if (n===3) document.getElementById('reerMax').textContent = fmt(Math.min(getVal('revenuBrut')*REER.rate, REER.absMax));
+
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  currentStep = n;
+  renderProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function validate1() {
+  let ok = true;
+  ['province','statut'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value) { el.classList.add('error'); ok=false; } else el.classList.remove('error');
+  });
+  const r = document.getElementById('revenuBrut');
+  if (!r.value||Number(r.value)<0) { r.classList.add('error'); ok=false; } else r.classList.remove('error');
+  const a = document.getElementById('age');
+  if (!a.value||Number(a.value)<16) { a.classList.add('error'); ok=false; } else a.classList.remove('error');
+  return ok;
+}
+
+function getVal(id){return Number(document.getElementById(id).value)||0}
+function getChecked(id){return document.getElementById(id).checked}
+function getSel(id){return document.getElementById(id).value}
+function toggleC(h){h.parentElement.classList.toggle('open')}
+function toggleBureau(){document.getElementById('bureauDetails').style.display=getChecked('bureauDomicile')?'':'none'}
+function toggleBureauMethode(){
+  const m=getSel('bureauMethode');
+  document.getElementById('bureauJoursGroup').style.display=m==='simplifiee'?'':'none';
+  document.getElementById('bureauDetailleGroup').style.display=m==='detaillee'?'':'none';
+}
+
+function fmt(n){return new Intl.NumberFormat('fr-CA',{style:'currency',currency:'CAD',minimumFractionDigits:0,maximumFractionDigits:0}).format(n)}
+function fmtPct(n){return (n*100).toFixed(1)+' %'}
+
+function calcProg(income, brackets) {
+  let tax=0;
+  for(const b of brackets){if(income<=b.min)break;tax+=(Math.min(income,b.max)-b.min)*b.rate}
+  return tax;
+}
+
+// ========== RELEVES ==========
+function genReleves() {
+  const statut=getSel('statut'), prov=getSel('province'), items=[];
+  if(statut==='salarie'||statut==='mixte'){
+    items.push({code:'T4',desc:'Etat de la remuneration payee'});
+    if(prov==='QC') items.push({code:'RL-1',desc:'Revenus d\'emploi (Quebec)'});
+  }
+  if(statut==='autonome'||statut==='mixte'){
+    items.push({code:'T2125',desc:'Resultats d\'activites d\'entreprise'});
+    if(prov==='QC') items.push({code:'TP-80',desc:'Revenus et depenses d\'entreprise (QC)'});
+  }
+  if(statut==='retraite'){
+    items.push({code:'T4A / T4A(P)',desc:'Revenus de pension / RPC-RRQ'});
+    if(prov==='QC') items.push({code:'RL-2',desc:'Revenus de retraite (QC)'});
+  }
+  items.push({code:'T5',desc:'Revenus de placements'});
+  items.push({code:'REER',desc:'Recus de cotisation REER'});
+  if(prov==='QC') items.push({code:'RL-31',desc:'Credit solidarite (loyer)'});
+
+  let html='<ul class="checklist">';
+  items.forEach(it=>html+=`<li><span class="check">&#10003;</span> <strong>${it.code}</strong> &mdash; ${it.desc}</li>`);
+  html+='</ul>';
+  document.getElementById('relevesContent').innerHTML=html;
+}
+
+// ========== MOTEUR PRINCIPAL ==========
+function calculate() {
+  const prov=getSel('province'), statut=getSel('statut');
+  const revenuBrut=getVal('revenuBrut'), revenuAutonome=getVal('revenuAutonome');
+  const age=getVal('age'), nbEnfants=getVal('nbEnfants'), situation=getSel('situation');
+  const revenuConjoint=getVal('revenuConjoint');
+  const isQC = prov==='QC';
+
+  const reer=getVal('reer'), celiapp=Math.min(getVal('celiapp'),8000);
+  const cotSyndicale=getVal('cotSyndicale'), fraisDemenagement=getVal('fraisDemenagement');
+  const pensionAlimentaire=getVal('pensionAlimentaire'), depensesAutonome=getVal('depensesAutonome');
+  const autresDeductions=getVal('autresDeductions'), interetsPretEtudiant=getVal('interetsPretEtudiant');
+  const fraisScolarite=getVal('fraisScolarite'), fraisMedicaux=getVal('fraisMedicaux');
+  const dons=getVal('dons'), fraisGarde=getVal('fraisGarde');
+
+  let bureauDed=0;
+  if(getChecked('bureauDomicile')){
+    bureauDed=getSel('bureauMethode')==='simplifiee' ? Math.min(getVal('bureauJours')*2,500) : getVal('bureauLoyer')+getVal('bureauServices');
+  }
+
+  const revNetAuto = statut==='autonome' ? Math.max(revenuBrut-depensesAutonome,0) :
+                     statut==='mixte' ? Math.max(revenuAutonome-depensesAutonome,0) : 0;
+  const revEmploi = statut==='autonome' ? 0 : statut==='mixte' ? revenuBrut-revenuAutonome : revenuBrut;
+  const revTotal = statut==='mixte' ? revEmploi+revNetAuto : statut==='autonome' ? revNetAuto : revenuBrut;
+
+  // --- Cotisations ---
+  const pensionPlan = isQC ? QPP : CPP;
+  let ae=0;
+  if(statut!=='autonome' && statut!=='retraite'){
+    const eiPlan = isQC ? EI_QC : EI_REG;
+    ae = Math.min(revEmploi * eiPlan.rate, eiPlan.max);
+  }
+
+  let cpp1=0, cpp2=0;
+  if(statut!=='retraite'){
+    const e1 = Math.min(revTotal, pensionPlan.maxEarnings) - pensionPlan.exemption;
+    cpp1 = Math.min(Math.max(e1,0)*pensionPlan.rate, pensionPlan.max);
+    if(statut==='autonome') cpp1 *= 2;
+
+    const e2 = Math.min(revTotal, CPP2.maxEarnings) - pensionPlan.maxEarnings;
+    cpp2 = Math.min(Math.max(e2,0)*CPP2.rate, CPP2.max);
+    if(statut==='autonome') cpp2 *= 2;
+  }
+
+  let rqap=0;
+  if(isQC){
+    if(statut==='autonome') rqap = Math.min(revTotal, RQAP.maxEarnings)*RQAP.autonome;
+    else if(statut!=='retraite') rqap = Math.min(revTotal, RQAP.maxEarnings)*RQAP.employee;
+  }
+
+  const totalCot = ae + cpp1 + cpp2 + rqap;
+  const cpp1Emp = statut==='autonome' ? cpp1/2 : cpp1;
+  const cpp2Emp = statut==='autonome' ? cpp2/2 : cpp2;
+
+  let dedAutonome = 0;
+  if(statut==='autonome') dedAutonome = cpp1/2 + cpp2/2 + (isQC ? rqap*0.5 : 0);
+
+  const totalDed = reer+celiapp+cotSyndicale+fraisDemenagement+pensionAlimentaire+autresDeductions+bureauDed+fraisGarde+dedAutonome;
+  const imposable = Math.max(revTotal - totalDed, 0);
+
+  // --- Federal ---
+  let fedBrut = calcProg(imposable, FED.brackets);
+  let bpa = FED.bpa;
+  if(imposable > FED.bpaThresholdLow){
+    const ratio = (FED.bpa-FED.bpaMin)/(FED.bpaThresholdHigh-FED.bpaThresholdLow);
+    bpa = Math.max(FED.bpaMin, FED.bpa-(imposable-FED.bpaThresholdLow)*ratio);
+  }
+  const fCR = .15;
+  let fCredits = bpa*fCR;
+  if(statut==='salarie'||statut==='mixte') fCredits += Math.min(revEmploi, FED.canadaEmployment)*fCR;
+  fCredits += ae*fCR + cpp1Emp*fCR + cpp2Emp*fCR + rqap*fCR;
+  fCredits += interetsPretEtudiant*fCR + fraisScolarite*fCR;
+
+  const medSeuil = Math.min(imposable*.03, FED.medicalCap);
+  const medAdm = Math.max(fraisMedicaux-medSeuil, 0);
+  fCredits += medAdm*fCR;
+
+  if(dons>0){
+    const donR = imposable>253414 ? .33 : .29;
+    fCredits += Math.min(dons,200)*fCR + Math.max(dons-200,0)*donR;
+  }
+  if(age>=65){
+    const ageRed = Math.max((imposable-FED.ageThreshold)*.15, 0);
+    fCredits += Math.max(FED.ageAmount-ageRed, 0)*fCR;
+  }
+  if(getChecked('handicap')) fCredits += FED.handicapAmount*fCR;
+
+  let fedNet = Math.max(fedBrut-fCredits, 0);
+  const abatement = isQC ? fedNet*QC_ABATEMENT : 0;
+  fedNet = Math.max(fedNet-abatement, 0);
+
+  // --- Provincial ---
+  const provData = PROV[prov];
+  let provBrut = calcProg(imposable, provData.brackets);
+  const pCR = provData.brackets[0].rate; // taux du premier palier pour credits
+  let pCredits = provData.bpa * pCR;
+
+  if(isQC && situation==='celibataire') pCredits += PROV.QC.personneSeule * pCR;
+
+  // Credits cotisations provincial
+  pCredits += cpp1Emp*pCR + cpp2Emp*pCR + rqap*pCR + ae*pCR;
+  pCredits += interetsPretEtudiant*pCR;
+  if(isQC) pCredits += fraisScolarite*0.08;
+  else pCredits += fraisScolarite*pCR;
+
+  // Medical provincial
+  const medThreshProv = isQC ? imposable * .03 : Math.min(imposable * .03, FED.medicalCap);
+  const medAdmProv = Math.max(fraisMedicaux - medThreshProv, 0);
+  if(isQC) pCredits += medAdmProv*0.20;
+  else pCredits += medAdmProv*pCR;
+
+  // Dons provincial
+  if(dons>0){
+    if(isQC){
+      pCredits += Math.min(dons,200)*0.20 + Math.max(dons-200,0)*0.2575;
+    } else {
+      const topRate = provData.brackets[provData.brackets.length-1].rate;
+      pCredits += Math.min(dons,200)*pCR + Math.max(dons-200,0)*topRate;
+    }
+  }
+
+  if(age>=65 && provData.ageAmount){
+    const ageThresh = provData.ageThreshold || FED.ageThreshold;
+    const ageRed = Math.max((imposable - ageThresh) * 0.15, 0);
+    pCredits += Math.max(provData.ageAmount - ageRed, 0) * pCR;
+  }
+  if(getChecked('handicap') && provData.disabilityAmount){
+    pCredits += provData.disabilityAmount * pCR;
+  }
+
+  let provNet = Math.max(provBrut-pCredits, 0);
+
+  // Ontario surtax
+  let ontarioSurtax = 0;
+  if(prov==='ON'){
+    const ontBase = provNet;
+    if(ontBase > 5710) ontarioSurtax += (ontBase-5710)*0.20;
+    if(ontBase > 7307) ontarioSurtax += (ontBase-7307)*0.36;
+    provNet += ontarioSurtax;
+  }
+
+  // QC prime au travail
+  let primeAuTravail=0;
+  if(isQC && revTotal>2400 && revTotal<50000 && statut!=='retraite'){
+    if(situation==='celibataire'){
+      primeAuTravail=Math.min(Math.max((revTotal-2400)*.09,0),1101);
+      if(revTotal>16780) primeAuTravail=Math.max(primeAuTravail-(revTotal-16780)*.10,0);
+    } else {
+      primeAuTravail=Math.min(Math.max((revTotal-3600)*.09,0),1738);
+      if(revTotal>27410) primeAuTravail=Math.max(primeAuTravail-(revTotal-27410)*.10,0);
+    }
+    provNet = Math.max(provNet-primeAuTravail, 0);
+  }
+
+  const totalFed=fedNet, totalProv=provNet;
+  const totalImpots=totalFed+totalProv;
+  const totalCharges=totalImpots+totalCot;
+  const tauxEff = revTotal>0 ? totalCharges/revTotal : 0;
+  const revNet = revTotal-totalCharges;
+
+  let tmFed=0, tmProv=0;
+  for(const b of FED.brackets){if(imposable>b.min) tmFed=b.rate}
+  for(const b of provData.brackets){if(imposable>b.min) tmProv=b.rate}
+  const tmCombine = tmFed*(1-(isQC?QC_ABATEMENT:0)) + tmProv;
+
+  // --- RENDER ---
+  let html='<div class="result-grid">';
+  html+=`<div class="result-card highlight"><div class="value">${fmt(totalCharges)}</div><div class="label">Total impots + cotisations</div></div>`;
+  html+=`<div class="result-card"><div class="value">${fmtPct(tauxEff)}</div><div class="label">Taux effectif</div></div>`;
+  html+=`<div class="result-card"><div class="value">${fmt(revNet)}</div><div class="label">Revenu net estime</div></div>`;
+  html+=`<div class="result-card"><div class="value">${fmtPct(tmCombine)}</div><div class="label">Taux marginal combine</div></div>`;
+  html+='</div>';
+
+  html+=`<table class="detail-table"><tr><th colspan="2">Detail</th></tr>`;
+  html+=`<tr><td>Revenu total</td><td>${fmt(revTotal)}</td></tr>`;
+  html+=`<tr><td>Deductions</td><td>- ${fmt(totalDed)}</td></tr>`;
+  html+=`<tr class="total"><td>Revenu imposable</td><td>${fmt(imposable)}</td></tr></table>`;
+
+  html+=`<table class="detail-table"><tr><th colspan="2">Impot federal</th></tr>`;
+  html+=`<tr><td>Impot brut</td><td>${fmt(fedBrut)}</td></tr>`;
+  html+=`<tr><td>Credits</td><td>- ${fmt(fCredits)}</td></tr>`;
+  if(isQC) html+=`<tr><td>Abattement Quebec (16.5 %)</td><td>- ${fmt(abatement)}</td></tr>`;
+  html+=`<tr class="total"><td>Federal net</td><td>${fmt(totalFed)}</td></tr></table>`;
+
+  html+=`<table class="detail-table"><tr><th colspan="2">Impot ${provData.name}</th></tr>`;
+  html+=`<tr><td>Impot brut</td><td>${fmt(provBrut)}</td></tr>`;
+  html+=`<tr><td>Credits</td><td>- ${fmt(pCredits)}</td></tr>`;
+  if(prov==='ON' && ontarioSurtax>0) html+=`<tr><td>Surtaxe Ontario</td><td>+ ${fmt(ontarioSurtax)}</td></tr>`;
+  if(primeAuTravail>0) html+=`<tr><td>Prime au travail (QC)</td><td>- ${fmt(primeAuTravail)}</td></tr>`;
+  html+=`<tr class="total"><td>${provData.name} net</td><td>${fmt(totalProv)}</td></tr></table>`;
+
+  html+=`<table class="detail-table"><tr><th colspan="2">Cotisations sociales</th></tr>`;
+  if(ae>0) html+=`<tr><td>Assurance-emploi (AE)</td><td>${fmt(ae)}</td></tr>`;
+  html+=`<tr><td>${isQC?'RRQ':'RPC'} (base)</td><td>${fmt(cpp1)}</td></tr>`;
+  if(cpp2>0) html+=`<tr><td>${isQC?'RRQ2':'RPC2'}</td><td>${fmt(cpp2)}</td></tr>`;
+  if(rqap>0) html+=`<tr><td>RQAP</td><td>${fmt(rqap)}</td></tr>`;
+  html+=`<tr class="total"><td>Total cotisations</td><td>${fmt(totalCot)}</td></tr></table>`;
+
+  html+=renderPie(totalFed,totalProv,totalCot,revNet, provData.name);
+  html+=renderBars(revTotal,totalDed,totalFed,totalProv,totalCot,revNet);
+
+  document.getElementById('resultatsContent').innerHTML=html;
+
+  window._r={revTotal,imposable,totalDed,totalFed,totalProv,totalCot,totalCharges,revNet,tauxEff,tmCombine,
+    statut,prov,age,situation,nbEnfants,reer,dons,fraisMedicaux,fraisGarde,bureauDed:bureauDed,
+    depensesAutonome,revenuConjoint,celiapp,interetsPretEtudiant,fraisScolarite,medSeuil,medAdm,
+    provName:provData.name,isQC,primeAuTravail};
+}
+
+// ========== SVG ==========
+function renderPie(fed,prov,cot,net,provName) {
+  const total=fed+prov+cot+net; if(total<=0)return '';
+  const data=[{v:fed,c:'#ef4444',l:'Federal'},{v:prov,c:'#8b5cf6',l:provName},{v:cot,c:'#f59e0b',l:'Cotisations'},{v:net,c:'#10b981',l:'Net'}];
+  const cx=120,cy=120,r=100; let a=-Math.PI/2, paths='';
+  data.forEach(d=>{if(d.v<=0)return;const p=d.v/total,a1=a,a2=a+p*2*Math.PI,lg=p>.5?1:0;
+    paths+=`<path d="M${cx},${cy} L${cx+r*Math.cos(a1)},${cy+r*Math.sin(a1)} A${r},${r} 0 ${lg},1 ${cx+r*Math.cos(a2)},${cy+r*Math.sin(a2)} Z" fill="${d.c}" opacity="0.85"/>`;a=a2});
+  let leg='<div class="chart-legend">';
+  data.forEach(d=>{if(d.v>0)leg+=`<div class="chart-legend-item"><div class="swatch" style="background:${d.c}"></div>${d.l}: ${fmt(d.v)}</div>`});
+  leg+='</div>';
+  return `<div class="chart-container"><svg width="240" height="240" viewBox="0 0 240 240">${paths}</svg>${leg}</div>`;
+}
+
+function renderBars(rev,ded,fed,prov,cot,net) {
+  if(rev<=0)return '';
+  const bW=50,gap=20,h=200,pad=40;
+  const items=[{v:rev,c:'#64748b',l:'Revenu'},{v:ded,c:'#06b6d4',l:'Deduc.'},{v:fed,c:'#ef4444',l:'Fed.'},{v:prov,c:'#8b5cf6',l:'Prov.'},{v:cot,c:'#f59e0b',l:'Cotis.'},{v:net,c:'#10b981',l:'Net'}];
+  const tW=items.length*bW+(items.length-1)*gap+pad*2;
+  let bars='';
+  items.forEach((it,i)=>{const bH=(it.v/rev)*(h-30),x=pad+i*(bW+gap),y=h-bH;
+    bars+=`<rect x="${x}" y="${y}" width="${bW}" height="${bH}" fill="${it.c}" rx="4" opacity="0.85"/>`;
+    bars+=`<text x="${x+bW/2}" y="${y-5}" text-anchor="middle" font-size="10" fill="currentColor">${fmt(it.v)}</text>`;
+    bars+=`<text x="${x+bW/2}" y="${h+15}" text-anchor="middle" font-size="10" fill="currentColor">${it.l}</text>`});
+  return `<div class="chart-container"><svg width="${tW}" height="${h+25}" viewBox="0 0 ${tW} ${h+25}">${bars}</svg></div>`;
+}
+
+// ========== CREDITS MANQUES ==========
+function genCredits() {
+  const r=window._r; if(!r)return;
+  const tips=[],alerts=[];
+
+  const reerMax=Math.min(r.revTotal*REER.rate,REER.absMax);
+  if(r.reer<reerMax*.5 && r.revTotal>30000){
+    const pot=reerMax-r.reer;
+    tips.push({t:'REER non maximise',d:`Cotisez ${fmt(pot)} de plus pour economiser ~${fmt(pot*r.tmCombine)}. Limite : 2 mars 2026.`,type:'tip'});
+  }
+  if(r.celiapp===0 && r.age<65 && r.situation!=='couple')
+    tips.push({t:'CELIAPP',d:'Deduisez jusqu\'a 8 000 $/an pour une premiere propriete.',type:'info'});
+  if(r.bureauDed===0 && r.statut==='salarie')
+    tips.push({t:'Bureau a domicile',d:'Deduisez jusqu\'a 500 $ (2 $/jour) si vous avez travaille de la maison.',type:'tip'});
+  if(r.fraisMedicaux>0 && r.medAdm<=0)
+    alerts.push({t:'Frais medicaux sous le seuil',d:`Vos frais de ${fmt(r.fraisMedicaux)} sont sous le seuil. Regroupez sur 12 mois ou declarez sous le conjoint.`,type:'warn'});
+  if(r.age>=65 && r.situation==='couple')
+    tips.push({t:'Fractionnement de pension',d:'Transferez jusqu\'a 50 % de vos revenus de pension au conjoint.',type:'tip'});
+  if(r.dons===0 && r.revTotal>50000)
+    tips.push({t:'Dons de bienfaisance',d:'Credit de 29-33 % federal + taux provincial superieur pour dons > 200 $.',type:'info'});
+  if(r.totalCharges>3000 && r.statut==='autonome')
+    alerts.push({t:'Acomptes provisionnels',d:'Des acomptes trimestriels sont probablement requis.',type:'warn'});
+  if(r.nbEnfants>0 && r.fraisGarde===0)
+    tips.push({t:'Frais de garde',d:'Enfants a charge sans frais declares. Verifiez garderie, camps de jour.',type:'info'});
+  if(r.interetsPretEtudiant===0 && r.age<35)
+    tips.push({t:'Interets pret etudiant',d:'Les interets sur pret gouvernemental donnent un credit non remboursable.',type:'info'});
+
+  let html='';
+  if(!tips.length && !alerts.length){
+    html='<div class="info-box tip"><span class="icon">&#127881;</span><div><strong>Excellent!</strong> Aucune deduction manquee evidente.</div></div>';
+  } else {
+    if(tips.length){
+      html+='<h3 style="margin:1rem 0 .5rem">Economies potentielles</h3>';
+      tips.forEach(t=>html+=`<div class="info-box ${t.type}"><span class="icon">${t.type==='tip'?'&#128161;':'&#8505;'}</span><div><strong>${t.t}</strong><br>${t.d}</div></div>`);
+    }
+    if(alerts.length){
+      html+='<h3 style="margin:1rem 0 .5rem">Alertes</h3>';
+      alerts.forEach(a=>html+=`<div class="info-box ${a.type}"><span class="icon">&#9888;</span><div><strong>${a.t}</strong><br>${a.d}</div></div>`);
+    }
+  }
+  document.getElementById('creditsManquesContent').innerHTML=html;
+}
+
+// ========== RECOMMANDATION ==========
+function genReco() {
+  const r=window._r; if(!r)return;
+  let score=0; const factors=[];
+  if(r.statut==='autonome'){score+=35;factors.push('Travailleur autonome')}
+  if(r.statut==='mixte'){score+=25;factors.push('Revenus mixtes')}
+  if(r.revTotal>150000){score+=15;factors.push('Revenu > 150 000 $')}
+  else if(r.revTotal>100000){score+=8;factors.push('Revenu > 100 000 $')}
+  if(r.depensesAutonome>10000){score+=10;factors.push('Depenses entreprise importantes')}
+  if(r.situation==='couple'&&r.revenuConjoint>0){score+=5;factors.push('Couple deux revenus')}
+  if(r.nbEnfants>0){score+=5;factors.push('Enfants a charge')}
+  if(r.dons>5000){score+=5;factors.push('Dons importants')}
+  if(r.bureauDed>500){score+=5;factors.push('Bureau detaille')}
+  if(r.fraisMedicaux>5000){score+=5;factors.push('Frais medicaux importants')}
+  if(r.age>=65){score+=10;factors.push('Retraite')}
+  score=Math.min(score,100);
+
+  const level=score<30?'low':score<60?'med':'high';
+  const label=score<30?'Simple':score<60?'Modere':'Complexe';
+  const tag=score<30?'tag-green':score<60?'tag-yellow':'tag-red';
+
+  let html=`<div style="text-align:center;margin:1rem 0"><span class="tag ${tag}">${label} — ${score}/100</span></div>`;
+  html+=`<div class="score-meter"><div class="fill ${level}" style="width:${score}%"></div></div>`;
+
+  if(factors.length){
+    html+='<h4 style="margin:1.5rem 0 .5rem">Facteurs de complexite</h4><ul class="checklist">';
+    factors.forEach(f=>html+=`<li><span class="check">&#9679;</span> ${f}</li>`);
+    html+='</ul>';
+  }
+
+  if(score<30) html+='<div class="reco-box diy"><h3>&#9989; Faites-le vous-meme</h3><p>Utilisez <strong>Wealthsimple Impot</strong> (gratuit) ou <strong>TurboImpot gratuit</strong>.</p></div>';
+  else if(score<60) html+='<div class="reco-box pro"><h3>&#128220; Logiciel recommande</h3><p>Un logiciel payant (<strong>TurboImpot, H&R Block</strong>) suffit. Un comptable optimiserait davantage.</p></div>';
+  else html+='<div class="reco-box complex"><h3>&#128188; Comptable recommande</h3><p>Situation complexe. Un professionnel peut vous faire economiser significativement.</p></div>';
+
+  html+=`<h4 style="margin:1.5rem 0 .5rem">Resume — ${r.provName} — 2025</h4>`;
+  html+='<table class="detail-table">';
+  html+=`<tr><td>Revenu total</td><td>${fmt(r.revTotal)}</td></tr>`;
+  html+=`<tr><td>Impot federal</td><td>${fmt(r.totalFed)}</td></tr>`;
+  html+=`<tr><td>Impot ${r.provName}</td><td>${fmt(r.totalProv)}</td></tr>`;
+  html+=`<tr><td>Cotisations</td><td>${fmt(r.totalCot)}</td></tr>`;
+  html+=`<tr class="total"><td>Total</td><td>${fmt(r.totalCharges)}</td></tr>`;
+  html+=`<tr><td>Taux effectif</td><td>${fmtPct(r.tauxEff)}</td></tr>`;
+  html+=`<tr><td>Revenu net</td><td>${fmt(r.revNet)}</td></tr>`;
+  html+='</table>';
+  document.getElementById('recoContent').innerHTML=html;
+}
+</script>
+</body>
+</html>
