@@ -347,13 +347,13 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 <div class="step" id="step2">
 <div class="card">
   <h2 class="card-title">2. Vos releves fiscaux</h2>
-  <p class="card-subtitle">Documents requis selon votre profil pour l'annee 2025</p>
+  <p class="card-subtitle">Entrez les montants de vos releves — disponibles sur Mon dossier (ARC) et Mon dossier (Revenu Quebec)</p>
 
-  <div id="relevesContent"></div>
+  <div id="relevesFormContainer"></div>
 
   <div class="info-box tip">
-    <span class="icon">&#9989;</span>
-    <div>Rassemblez ces documents avant de produire votre declaration. La plupart sont disponibles en ligne sur <strong>Mon dossier</strong> (ARC) et <strong>Mon dossier</strong> (Revenu Quebec). Date limite : <strong>30 avril 2026</strong> (15 juin 2026 pour les travailleurs autonomes).</div>
+    <span class="icon">&#128274;</span>
+    <div>Ces montants servent uniquement au calcul. Rien n'est sauvegarde.</div>
   </div>
 
   <div class="btn-row">
@@ -730,38 +730,94 @@ function getVal(id) { return Number(document.getElementById(id).value) || 0; }
 function getChecked(id) { return document.getElementById(id).checked; }
 function getSel(id) { return document.getElementById(id).value; }
 
-// ========== STEP 2: RELEVES ==========
+// ========== STEP 2: RELEVES (formulaire dynamique) ==========
 function generateReleves() {
   const statut = getSel('statut');
-  const revenu = getVal('revenuBrut');
-  const items = [];
+  const container = document.getElementById('relevesFormContainer');
+  if (!container) return;
+
+  let html = '';
 
   if (statut === 'salarie' || statut === 'mixte') {
-    items.push({ code: 'T4', desc: 'Etat de la remuneration payee', source: 'Employeur' });
-    items.push({ code: 'RL-1', desc: 'Revenus d\'emploi et revenus divers', source: 'Employeur' });
+    html += '<h3 style="margin:1rem 0 .5rem;font-size:.95rem;color:var(--primary)">T4 / RL-1 — Revenus d\'emploi</h3>';
+    html += '<div class="form-row">';
+    html += '<div class="form-group"><label for="relT4_14">Revenus d\'emploi <span class="line-ref">T4 case 14 / RL-1 case A</span></label><div class="input-dollar"><input type="number" id="relT4_14" placeholder="ex: 65000" min="0" step="100"></div></div>';
+    html += '<div class="form-group"><label for="relT4_16">Cotisations RRQ/RPC <span class="line-ref">T4 case 16 / RL-1 case B</span></label><div class="input-dollar"><input type="number" id="relT4_16" placeholder="ex: 4339" min="0" step="1"></div></div>';
+    html += '</div>';
+    html += '<div class="form-row">';
+    html += '<div class="form-group"><label for="relT4_18">Cotisations AE <span class="line-ref">T4 case 18</span></label><div class="input-dollar"><input type="number" id="relT4_18" placeholder="ex: 860" min="0" step="1"></div></div>';
+    html += '<div class="form-group"><label for="relT4_22">Impot retenu <span class="line-ref">T4 case 22 / RL-1 case E</span></label><div class="input-dollar"><input type="number" id="relT4_22" placeholder="ex: 12000" min="0" step="100"></div></div>';
+    html += '</div>';
+    html += '<div class="form-row">';
+    html += '<div class="form-group"><label for="relT4_44">Cotisations syndicales <span class="line-ref">T4 case 44 / RL-1 case F</span></label><div class="input-dollar"><input type="number" id="relT4_44" placeholder="ex: 850" min="0" step="1"></div></div>';
+    html += '<div class="form-group"><label for="relRL1_G">Cotisations RQAP <span class="line-ref">RL-1 case G</span></label><div class="input-dollar"><input type="number" id="relRL1_G" placeholder="ex: 420" min="0" step="1"></div></div>';
+    html += '</div>';
   }
-  if (statut === 'autonome' || statut === 'mixte') {
-    items.push({ code: 'T2125', desc: 'Etat des resultats des activites d\'une entreprise', source: 'Vous-meme' });
-    items.push({ code: 'TP-80', desc: 'Revenus et depenses d\'entreprise (QC)', source: 'Vous-meme' });
-  }
-  if (statut === 'retraite') {
-    items.push({ code: 'T4A', desc: 'Revenus de pension/retraite', source: 'Administrateur de regime' });
-    items.push({ code: 'T4A(OAS)', desc: 'Pension de la Securite de la vieillesse', source: 'Service Canada' });
-    items.push({ code: 'T4A(P)', desc: 'Prestations du RPC/RRQ', source: 'Service Canada / RRQ' });
-    items.push({ code: 'RL-2', desc: 'Revenus de retraite et rentes (QC)', source: 'Administrateur' });
-  }
-  if (revenu > 1000) {
-    items.push({ code: 'T5 / RL-3', desc: 'Revenus de placements (interets, dividendes)', source: 'Institution financiere' });
-  }
-  items.push({ code: 'REER', desc: 'Recus de cotisation REER', source: 'Institution financiere' });
-  items.push({ code: 'RL-31', desc: 'Credit d\'impot pour solidarite (loyer)', source: 'Proprietaire / vous-meme' });
 
-  let html = '<ul class="checklist">';
-  items.forEach(it => {
-    html += `<li><span class="check">&#10003;</span> <strong>${it.code}</strong> &mdash; ${it.desc} <em style="color:var(--text-muted);font-size:.8rem">(${it.source})</em></li>`;
-  });
-  html += '</ul>';
-  document.getElementById('relevesContent').innerHTML = html;
+  if (statut === 'autonome' || statut === 'mixte') {
+    html += '<h3 style="margin:1rem 0 .5rem;font-size:.95rem;color:var(--primary)">T2125 / TP-80 — Revenus d\'entreprise</h3>';
+    html += '<div class="form-row">';
+    html += '<div class="form-group"><label for="relT2125_rev">Revenus bruts d\'entreprise <span class="line-ref">T2125 ligne 8299 / TP-80 ligne 01</span></label><div class="input-dollar"><input type="number" id="relT2125_rev" placeholder="ex: 80000" min="0" step="100"></div></div>';
+    html += '<div class="form-group"><label for="relT2125_dep">Depenses d\'entreprise <span class="line-ref">T2125 ligne 9369 / TP-80 ligne 36</span></label><div class="input-dollar"><input type="number" id="relT2125_dep" placeholder="ex: 15000" min="0" step="100"></div></div>';
+    html += '</div>';
+  }
+
+  if (statut === 'retraite') {
+    html += '<h3 style="margin:1rem 0 .5rem;font-size:.95rem;color:var(--primary)">T4A / RL-2 — Revenus de retraite</h3>';
+    html += '<div class="form-row">';
+    html += '<div class="form-group"><label for="relT4A_pension">Revenus de pension <span class="line-ref">T4A case 016 / RL-2 case A</span></label><div class="input-dollar"><input type="number" id="relT4A_pension" placeholder="ex: 30000" min="0" step="100"></div></div>';
+    html += '<div class="form-group"><label for="relT4AP_rrq">Prestations RRQ <span class="line-ref">T4A(P) case 20</span></label><div class="input-dollar"><input type="number" id="relT4AP_rrq" placeholder="ex: 8000" min="0" step="100"></div></div>';
+    html += '</div>';
+    html += '<div class="form-group"><label for="relT4A_psv">Pension Securite vieillesse <span class="line-ref">T4A(OAS) case 18</span></label><div class="input-dollar"><input type="number" id="relT4A_psv" placeholder="ex: 8500" min="0" step="100"></div></div>';
+  }
+
+  html += '<h3 style="margin:1rem 0 .5rem;font-size:.95rem;color:var(--primary)">Autres releves</h3>';
+  html += '<div class="form-row">';
+  html += '<div class="form-group"><label for="relT5_int">Revenus de placements <span class="line-ref">T5 case 13 / RL-3 case A</span></label><div class="input-dollar"><input type="number" id="relT5_int" placeholder="0" min="0" step="10"></div></div>';
+  html += '<div class="form-group"><label for="relRL31_loyer">Loyer annuel paye <span class="line-ref">RL-31 case A (credit solidarite)</span></label><div class="input-dollar"><input type="number" id="relRL31_loyer" placeholder="0" min="0" step="100"></div></div>';
+  html += '</div>';
+
+  html += '<div class="info-box info" style="margin-top:1rem"><span class="icon">&#128161;</span><div>Les montants entres ici seront <strong>reportes automatiquement</strong> dans les etapes suivantes.</div></div>';
+
+  container.innerHTML = html;
+  prefillFromReleves();
+}
+
+function prefillFromReleves() {
+  // Reporter T4 case 14 → revenu brut (step 1)
+  const el14 = document.getElementById('relT4_14');
+  if (el14) {
+    el14.addEventListener('change', function() {
+      const revBrut = document.getElementById('revenuBrut');
+      if (revBrut && (!revBrut.value || Number(revBrut.value) === 0)) {
+        revBrut.value = this.value;
+      }
+    });
+  }
+  // Reporter T4 case 44 → cotisations syndicales (step 3)
+  const el44 = document.getElementById('relT4_44');
+  if (el44) {
+    el44.addEventListener('change', function() {
+      const cot = document.getElementById('cotSyndicale');
+      if (cot) cot.value = this.value;
+    });
+  }
+  // Reporter T2125 revenus → revenu autonome (step 1)
+  const elT2125 = document.getElementById('relT2125_rev');
+  if (elT2125) {
+    elT2125.addEventListener('change', function() {
+      const revAut = document.getElementById('revenuAutonome');
+      if (revAut) revAut.value = this.value;
+    });
+  }
+  // Reporter T2125 depenses → depenses autonome (step 3)
+  const elT2125dep = document.getElementById('relT2125_dep');
+  if (elT2125dep) {
+    elT2125dep.addEventListener('change', function() {
+      const dep = document.getElementById('depensesAutonome');
+      if (dep) dep.value = this.value;
+    });
+  }
 }
 
 // ========== STEP 3 HELPERS ==========
