@@ -592,8 +592,9 @@ const TAX = {
     rqapEmployee: 0.00494,
     rqapAutonome: 0.00878,
     rqapMaxEarnings: 98000,
-    ageAmount: 3742,
-    handicapAmount: 4420
+    ageAmount: 3906,
+    ageThreshold: 42090,
+    handicapAmount: 4123
   },
   rrq: {
     rate1: 0.064,
@@ -898,27 +899,49 @@ function calculateTaxes() {
     qcCredits += Math.min(dons, 200) * 0.20 + Math.max(dons - 200, 0) * 0.2575;
   }
 
-  if (age >= 65) qcCredits += TAX.quebec.ageAmount * qcCR;
+  if (age >= 65) {
+    const ageRedQC = Math.max((revenuImposable - TAX.quebec.ageThreshold) * 0.1875, 0);
+    qcCredits += Math.max(TAX.quebec.ageAmount - ageRedQC, 0) * qcCR;
+  }
   if (getChecked('handicap')) qcCredits += TAX.quebec.handicapAmount * qcCR;
 
   let qcTaxNet = Math.max(qcTaxBrut - qcCredits, 0);
 
   // ===== CREDITS SPECIFIQUES QC =====
   let primeAuTravail = 0;
-  if (revenuTotal > 2400 && revenuTotal < 50000 && statut !== 'retraite') {
+  if (revenuTotal > 2400 && statut !== 'retraite') {
     if (situation === 'celibataire') {
-      primeAuTravail = Math.min(Math.max((revenuTotal - 2400) * 0.09, 0), 1101);
-      if (revenuTotal > 16780) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 16780) * 0.10, 0);
+      primeAuTravail = Math.min(Math.max((revenuTotal - 2400) * 0.116, 0), 1186);
+      if (revenuTotal > 12620) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 12620) * 0.10, 0);
+    } else if (nbEnfants > 0) {
+      // Couple ou monoparental avec enfants
+      const seuil = situation === 'monoparental' ? 2400 : 3600;
+      const taux = situation === 'monoparental' ? 0.30 : 0.25;
+      const maxPrime = situation === 'monoparental' ? 3066 : 3984;
+      const seuilRed = situation === 'monoparental' ? 12620 : 19534;
+      primeAuTravail = Math.min(Math.max((revenuTotal - seuil) * taux, 0), maxPrime);
+      if (revenuTotal > seuilRed) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - seuilRed) * 0.10, 0);
     } else {
-      primeAuTravail = Math.min(Math.max((revenuTotal - 3600) * 0.09, 0), 1738);
-      if (revenuTotal > 27410) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 27410) * 0.10, 0);
+      // Couple sans enfants
+      primeAuTravail = Math.min(Math.max((revenuTotal - 3600) * 0.116, 0), 1848);
+      if (revenuTotal > 19534) primeAuTravail = Math.max(primeAuTravail - (revenuTotal - 19534) * 0.10, 0);
     }
   }
 
+  // Credit de solidarite (3 composantes : TVQ + logement + nordique)
   let creditSolidarite = 0;
-  if (revenuTotal < 60000) {
-    creditSolidarite = situation === 'celibataire' ? 1032 : 1236;
-    if (revenuTotal > 39000) creditSolidarite = Math.max(creditSolidarite - (revenuTotal - 39000) * 0.06, 0);
+  if (revenuTotal < 65000) {
+    // Composante TVQ
+    let tvq = 356;
+    if (situation === 'celibataire') tvq += 169; // supplement personne seule
+    else tvq += 356; // conjoint
+    // Composante logement (presume locataire — majorite des demandeurs)
+    const logement = (situation === 'celibataire' || situation === 'monoparental') ? 731 : 888;
+    creditSolidarite = tvq + logement;
+    // Reduction progressive (6% si 2+ composantes)
+    if (revenuTotal > 42325) {
+      creditSolidarite = Math.max(creditSolidarite - (revenuTotal - 42325) * 0.06, 0);
+    }
   }
 
   // ===== TOTAUX =====
