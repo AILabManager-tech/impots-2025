@@ -84,8 +84,9 @@ a{color:var(--primary);text-decoration:none}
 header{text-align:center;padding:2rem 1rem 1rem}
 header h1{font-size:1.75rem;color:var(--primary)}
 header p{color:var(--text-secondary);margin-top:.25rem;font-size:.95rem}
-.disclaimer{background:#fef3c7;border:1px solid #f59e0b;border-radius:var(--radius-sm);padding:1rem 1.25rem;font-size:.82rem;color:#92400e;margin:1rem auto;max-width:var(--max-w);text-align:left;line-height:1.6}
-@media(prefers-color-scheme:dark){.disclaimer{background:#422006;border-color:#d97706;color:#fde68a}}
+.disclaimer{background:rgba(254,243,199,.5);border:1px solid rgba(245,158,11,.5);border-radius:var(--radius-sm);padding:1rem 1.25rem;font-size:.82rem;color:#92400e;margin:1rem auto;max-width:var(--max-w);text-align:left;line-height:1.6;opacity:.5;transition:opacity .3s ease}
+.disclaimer:hover{opacity:1}
+@media(prefers-color-scheme:dark){.disclaimer{background:rgba(66,32,6,.5);border-color:rgba(217,119,6,.5);color:#fde68a}}
 .disclaimer strong{color:#b45309}
 @media(prefers-color-scheme:dark){.disclaimer strong{color:#fbbf24}}
 .disclaimer .lock-icon{font-size:1rem;margin-right:.4rem}
@@ -262,13 +263,8 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 </header>
 
 <div class="disclaimer">
-  <strong>&#9888; AVIS IMPORTANT — Lisez avant d'utiliser cet outil</strong><br><br>
-  <strong>1. Estimation seulement.</strong> Ce calculateur fournit une <strong>estimation approximative</strong> a titre informatif et educatif uniquement. Les resultats ne constituent en aucun cas un avis fiscal, comptable, financier ou juridique professionnel. Les montants affiches peuvent differer de votre declaration officielle.<br><br>
-  <strong>2. Aucune garantie.</strong> Malgre nos efforts pour maintenir les taux et baremes a jour (derniere verification : mars 2026), nous ne garantissons pas l'exactitude, l'exhaustivite ni l'actualite des calculs. Les lois fiscales et leurs parametres peuvent changer sans preavis. <strong>Ne prenez aucune decision financiere</strong> en vous basant uniquement sur ces resultats.<br><br>
-  <strong>3. Consultez un professionnel.</strong> Pour votre declaration officielle, consultez un comptable professionnel agree (CPA) ou utilisez un logiciel d'impot certifie. Dates limites : <strong>30 avril 2026</strong> (general) | <strong>15 juin 2026</strong> (travailleurs autonomes) | Solde du : 30 avril 2026 dans tous les cas.<br><br>
-  <strong>4. Aucun lien gouvernemental.</strong> Cet outil n'est ni produit, ni approuve, ni affilie a l'Agence du revenu du Canada (ARC), a Revenu Quebec, ni a aucun organisme gouvernemental.<br><br>
-  <span class="lock-icon">&#128274;</span> <strong>5. Zero donnee personnelle.</strong> Aucune information d'identification n'est demandee (pas de nom, numero d'assurance sociale, adresse, courriel ni telephone). Seuls des montants financiers anonymes sont saisis. <strong>Absolument rien n'est enregistre</strong> — ni sur nos serveurs, ni dans votre navigateur (aucun cookie, aucun stockage local, aucun traceur). Tous les calculs sont effectues localement sur votre appareil. <strong>Si vous fermez ou rafraichissez cette page, toutes les donnees saisies seront perdues definitivement</strong> et il faudra tout recommencer.<br><br>
-  <strong>6. Limitation de responsabilite.</strong> En utilisant cet outil, vous acceptez que Mark Systems inc. et ses collaborateurs ne peuvent etre tenus responsables de toute erreur de calcul, perte financiere, penalite, interet ou consequence decoulant directement ou indirectement de l'utilisation de ces estimations.
+  <strong>&#9888; Estimation a titre informatif seulement</strong> — ne constitue pas un avis fiscal professionnel. Consultez un CPA ou un logiciel certifie pour votre declaration officielle. Dates limites : <strong>30 avril 2026</strong> | <strong>15 juin 2026</strong> (autonomes). Outil independant, non affilie a l'ARC ni a Revenu Quebec.<br><br>
+  <span class="lock-icon">&#128274;</span> <strong>Entrez vos vrais montants</strong> (revenus, REER, deductions, etc.) pour obtenir une estimation fiable. <strong>Aucune information personnelle n'est demandee</strong> : pas de nom, NAS, adresse, courriel ni telephone — que des chiffres. Rien n'est enregistre nulle part (aucun serveur, cookie, traceur). Tout est calcule localement sur votre appareil. <strong>Fermez la page = tout disparait.</strong>
 </div>
 
 <!-- Progress bar -->
