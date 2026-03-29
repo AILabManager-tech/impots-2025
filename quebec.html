@@ -84,7 +84,11 @@ a{color:var(--primary);text-decoration:none}
 header{text-align:center;padding:2rem 1rem 1rem}
 header h1{font-size:1.75rem;color:var(--primary)}
 header p{color:var(--text-secondary);margin-top:.25rem;font-size:.95rem}
-.disclaimer{background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.8rem;color:var(--text-secondary);margin:1rem auto;max-width:var(--max-w);text-align:center}
+.disclaimer{background:#fef3c7;border:1px solid #f59e0b;border-radius:var(--radius-sm);padding:1rem 1.25rem;font-size:.82rem;color:#92400e;margin:1rem auto;max-width:var(--max-w);text-align:left;line-height:1.6}
+@media(prefers-color-scheme:dark){.disclaimer{background:#422006;border-color:#d97706;color:#fde68a}}
+.disclaimer strong{color:#b45309}
+@media(prefers-color-scheme:dark){.disclaimer strong{color:#fbbf24}}
+.disclaimer .lock-icon{font-size:1rem;margin-right:.4rem}
 
 /* Progress bar */
 .progress-bar{display:flex;align-items:center;justify-content:center;gap:.25rem;margin:1.5rem auto;max-width:var(--max-w);padding:0 1rem;flex-wrap:wrap}
@@ -252,7 +256,8 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 </header>
 
 <div class="disclaimer">
-  Cet outil fournit une <strong>estimation</strong> a titre informatif seulement. Il ne constitue pas un avis fiscal professionnel. Consultez un comptable pour votre declaration officielle. Date limite : 30 avril 2026.
+  <strong>&#9888; Estimation a titre informatif seulement.</strong> Cet outil ne constitue pas un avis fiscal professionnel. Consultez un comptable pour votre declaration officielle. Date limite : <strong>30 avril 2026</strong> (15 juin pour les travailleurs autonomes).<br><br>
+  <span class="lock-icon">&#128274;</span> <strong>Aucune donnee personnelle n'est demandee</strong> (pas de nom, NAS, adresse ou courriel) — uniquement des montants financiers. <strong>Rien n'est enregistre</strong>, ni sur nos serveurs, ni dans votre navigateur. Si vous fermez cette page, tout sera a recommencer.
 </div>
 
 <!-- Progress bar -->
@@ -547,8 +552,8 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 </div>
 
 <footer>
-  Calculateur d'impots Quebec 2025 &mdash; Outil a titre informatif seulement<br>
-  Les calculs sont des estimations et ne remplacent pas un avis professionnel.
+  Calculateur d'impots Quebec 2025 &mdash; Estimation a titre informatif seulement<br>
+  Aucune donnee n'est collectee, stockee ou transmise. &#128274; Zero traceur. Zero cookie.
 </footer>
 
 <script>
