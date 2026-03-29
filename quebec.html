@@ -117,6 +117,8 @@ input.error+.error-msg{display:block}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 
+.line-ref,.line-ref-inline{display:block;font-size:.7rem;font-weight:400;color:var(--primary-light);opacity:.8;margin-top:1px;font-family:monospace}
+.line-ref-inline{display:inline;font-size:.65rem;margin-left:.5rem}
 .checkbox-group{display:flex;align-items:center;gap:.5rem;margin:.5rem 0}
 .checkbox-group input[type="checkbox"]{width:18px;height:18px;accent-color:var(--primary)}
 .checkbox-group label{font-weight:400;margin:0;cursor:pointer}
@@ -275,14 +277,14 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 
   <div class="form-row">
     <div class="form-group">
-      <label for="revenuBrut">Revenu brut annuel</label>
+      <label for="revenuBrut">Revenu brut annuel <span class="line-ref">T4 case 14 → T1 ligne 10100 / RL-1 case A → TP-1 ligne 101</span></label>
       <div class="input-dollar">
         <input type="number" id="revenuBrut" placeholder="ex: 65000" min="0" step="100">
       </div>
       <div class="error-msg">Veuillez entrer un montant valide</div>
     </div>
     <div class="form-group" id="revenuAutonomeGroup" style="display:none">
-      <label for="revenuAutonome">Revenu autonome brut</label>
+      <label for="revenuAutonome">Revenu autonome brut <span class="line-ref">T2125 → T1 ligne 13500 / TP-80 → TP-1 ligne 164</span></label>
       <div class="input-dollar">
         <input type="number" id="revenuAutonome" placeholder="ex: 30000" min="0" step="100">
       </div>
@@ -319,7 +321,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 
   <div class="checkbox-group">
     <input type="checkbox" id="handicap">
-    <label for="handicap">Personne en situation de handicap (credit d'impot)</label>
+    <label for="handicap">Personne en situation de handicap <span class="line-ref">T2201 → T1 ligne 31600 / TP-1 ligne 376</span></label>
   </div>
 
   <div class="btn-row">
@@ -362,12 +364,12 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
     <div class="collapsible-body">
       <div class="form-row">
         <div class="form-group">
-          <label for="reer">Cotisations REER</label>
+          <label for="reer">Cotisations REER <span class="line-ref">T1 ligne 20800 / TP-1 ligne 214</span></label>
           <div class="hint">Maximum deductible : <span id="reerMax">--</span> (date limite : 2 mars 2026)</div>
           <div class="input-dollar"><input type="number" id="reer" value="0" min="0" step="100"></div>
         </div>
         <div class="form-group">
-          <label for="celiapp">Cotisations CELIAPP</label>
+          <label for="celiapp">Cotisations CELIAPP <span class="line-ref">T1 ligne 20805 / TP-1 ligne 215</span></label>
           <div class="hint">Maximum : 8 000 $ / annee</div>
           <div class="input-dollar"><input type="number" id="celiapp" value="0" min="0" step="100"></div>
         </div>
@@ -377,7 +379,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 
   <div class="collapsible" id="collBureau">
     <div class="collapsible-header" onclick="toggleCollapsible(this)">
-      Bureau a domicile <span class="arrow">&#9660;</span>
+      Bureau a domicile <span class="line-ref-inline">T777/T777S → T1 ligne 22900 / TP-1 ligne 207</span> <span class="arrow">&#9660;</span>
     </div>
     <div class="collapsible-body">
       <div class="checkbox-group">
@@ -424,7 +426,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
     </div>
     <div class="collapsible-body">
       <div class="form-group">
-        <label for="fraisMedicaux">Total des frais medicaux admissibles</label>
+        <label for="fraisMedicaux">Total des frais medicaux admissibles <span class="line-ref">T1 ligne 33099 / TP-1 ligne 381</span></label>
         <div class="hint">Inclut : dentiste, lunettes, medicaments, physiotherapie, etc.</div>
         <div class="input-dollar"><input type="number" id="fraisMedicaux" value="0" min="0" step="50"></div>
       </div>
@@ -437,7 +439,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
     </div>
     <div class="collapsible-body">
       <div class="form-group">
-        <label for="dons">Total des dons avec recus officiels</label>
+        <label for="dons">Total des dons avec recus officiels <span class="line-ref">T1 ligne 34900 / TP-1 ligne 395 (Annexe V)</span></label>
         <div class="input-dollar"><input type="number" id="dons" value="0" min="0" step="10"></div>
       </div>
     </div>
@@ -449,7 +451,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
     </div>
     <div class="collapsible-body">
       <div class="form-group">
-        <label for="fraisGarde">Frais de garde d'enfants (net apres subventions)</label>
+        <label for="fraisGarde">Frais de garde d'enfants (net apres subventions) <span class="line-ref">T1 ligne 21400 / TP-1 ligne 455 (Annexe C)</span></label>
         <div class="input-dollar"><input type="number" id="fraisGarde" value="0" min="0" step="100"></div>
       </div>
     </div>
@@ -462,37 +464,37 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
     <div class="collapsible-body">
       <div class="form-row">
         <div class="form-group">
-          <label for="cotSyndicale">Cotisations syndicales / professionnelles</label>
+          <label for="cotSyndicale">Cotisations syndicales / professionnelles <span class="line-ref">T1 ligne 21200 / TP-1 ligne 373</span></label>
           <div class="input-dollar"><input type="number" id="cotSyndicale" value="0" min="0"></div>
         </div>
         <div class="form-group">
-          <label for="fraisDemenagement">Frais de demenagement</label>
+          <label for="fraisDemenagement">Frais de demenagement <span class="line-ref">T1 ligne 21900 / TP-1 ligne 228</span></label>
           <div class="hint">Si demenagement pour se rapprocher du travail (40km+)</div>
           <div class="input-dollar"><input type="number" id="fraisDemenagement" value="0" min="0"></div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="interetsPretEtudiant">Interets sur pret etudiant</label>
+          <label for="interetsPretEtudiant">Interets sur pret etudiant <span class="line-ref">T1 ligne 31900 / TP-1 ligne 385</span></label>
           <div class="input-dollar"><input type="number" id="interetsPretEtudiant" value="0" min="0"></div>
         </div>
         <div class="form-group">
-          <label for="fraisScolarite">Frais de scolarite (T2202 / RL-8)</label>
+          <label for="fraisScolarite">Frais de scolarite <span class="line-ref">T2202 → T1 Annexe 11 / RL-8 → TP-1 ligne 398 (Annexe T)</span></label>
           <div class="input-dollar"><input type="number" id="fraisScolarite" value="0" min="0"></div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="pensionAlimentaire">Pension alimentaire versee</label>
+          <label for="pensionAlimentaire">Pension alimentaire versee <span class="line-ref">T1 ligne 22000 / TP-1 ligne 225</span></label>
           <div class="input-dollar"><input type="number" id="pensionAlimentaire" value="0" min="0"></div>
         </div>
         <div class="form-group">
-          <label for="depensesAutonome">Depenses d'entreprise (autonome)</label>
+          <label for="depensesAutonome">Depenses d'entreprise (autonome) <span class="line-ref">T2125 partie 4 / TP-80 partie 3</span></label>
           <div class="input-dollar"><input type="number" id="depensesAutonome" value="0" min="0"></div>
         </div>
       </div>
       <div class="form-group">
-        <label for="autresDeductions">Autres deductions (ligne 20800 federal)</label>
+        <label for="autresDeductions">Autres deductions <span class="line-ref">T1 ligne 23200 / TP-1 ligne 250</span></label>
         <div class="input-dollar"><input type="number" id="autresDeductions" value="0" min="0"></div>
       </div>
     </div>
