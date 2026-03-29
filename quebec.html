@@ -92,15 +92,21 @@ header p{color:var(--text-secondary);margin-top:.25rem;font-size:.95rem}
 
 /* Progress bar */
 .progress-bar{display:flex;align-items:center;justify-content:center;gap:.25rem;margin:1.5rem auto;max-width:var(--max-w);padding:0 1rem;flex-wrap:wrap}
-.progress-step{display:flex;align-items:center;gap:.25rem;font-size:.8rem;color:var(--text-muted);transition:var(--transition)}
+.progress-step{display:flex;align-items:center;gap:.25rem;font-size:.8rem;color:var(--text-muted);transition:var(--transition);cursor:pointer;-webkit-user-select:none;user-select:none}
+.progress-step:hover .num{transform:scale(1.15);box-shadow:0 0 0 3px rgba(59,130,246,.25)}
 .progress-step .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;border:2px solid var(--border);background:var(--bg-card);transition:var(--transition)}
 .progress-step.active .num{background:var(--primary);color:#fff;border-color:var(--primary)}
 .progress-step.done .num{background:var(--accent);color:#fff;border-color:var(--accent)}
+.progress-step.done:hover .num{box-shadow:0 0 0 3px rgba(5,150,105,.25)}
+.progress-step.error .num{background:var(--danger);color:#fff;border-color:var(--danger);animation:pulse-error .8s ease-in-out}
+.progress-step.error{color:var(--danger)}
+@keyframes pulse-error{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
 .progress-step.active,.progress-step.done{color:var(--text)}
 .progress-step .label{display:none}
 @media(min-width:640px){.progress-step .label{display:inline}}
 .progress-line{width:24px;height:2px;background:var(--border);transition:var(--transition)}
 .progress-line.done{background:var(--accent)}
+.progress-line.error{background:var(--danger)}
 
 /* Card */
 .card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem;margin:1rem auto;max-width:var(--max-w);animation:fadeIn .3s ease}
@@ -235,7 +241,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
   header,.progress-bar,.btn-row,.disclaimer,footer,.no-print{display:none!important}
   .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;padding:1rem}
   .step{display:block!important}
-  .step:not(#step4):not(#step5):not(#step6){display:none!important}
+  .step:not(#step3):not(#step4):not(#step5){display:none!important}
   .result-card.highlight{background:#1a56db;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
@@ -336,36 +342,29 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
 
   <div class="btn-row">
     <div></div>
-    <button class="btn btn-primary" onclick="goToStep(2)">Suivant &#8594;</button>
+    <button class="btn btn-primary" onclick="navigateToStep(2)">Suivant &#8594;</button>
   </div>
 </div>
 </div>
 
-<!-- Step 2: Releves -->
+<!-- Step 2: Deductions (anciennement etape 3) -->
 <div class="step" id="step2">
 <div class="card">
-  <h2 class="card-title">2. Vos releves fiscaux</h2>
-  <p class="card-subtitle">Documents requis selon votre profil pour l'annee 2025</p>
-
-  <div id="relevesContent"></div>
-
-  <div class="info-box tip">
-    <span class="icon">&#9989;</span>
-    <div>Rassemblez ces documents avant de produire votre declaration. La plupart sont disponibles en ligne sur Mon dossier (ARC) et Mon dossier (Revenu Quebec). Date limite : <strong>30 avril 2026</strong> (15 juin 2026 pour les travailleurs autonomes).</div>
-  </div>
-
-  <div class="btn-row">
-    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Retour</button>
-    <button class="btn btn-primary" onclick="goToStep(3)">Suivant &#8594;</button>
-  </div>
-</div>
-</div>
-
-<!-- Step 3: Deductions -->
-<div class="step" id="step3">
-<div class="card">
-  <h2 class="card-title">3. Deductions et credits</h2>
+  <h2 class="card-title">2. Deductions et credits</h2>
   <p class="card-subtitle">Maximisez vos economies d'impot pour 2025</p>
+
+  <div class="collapsible" id="collReleves">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Releves fiscaux requis <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div id="relevesContent"></div>
+      <div class="info-box tip" style="margin-top:.75rem">
+        <span class="icon">&#9989;</span>
+        <div>Disponibles en ligne sur <strong>Mon dossier</strong> (ARC) et <strong>Mon dossier</strong> (Revenu Quebec).</div>
+      </div>
+    </div>
+  </div>
 
   <div class="collapsible open" id="collReer">
     <div class="collapsible-header" onclick="toggleCollapsible(this)">
@@ -511,42 +510,42 @@ footer{text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:.8r
   </div>
 
   <div class="btn-row">
-    <button class="btn btn-secondary" onclick="goToStep(2)">&#8592; Retour</button>
-    <button class="btn btn-primary" onclick="goToStep(4)">Calculer &#8594;</button>
+    <button class="btn btn-secondary" onclick="goToStep(1)">&#8592; Retour</button>
+    <button class="btn btn-primary" onclick="navigateToStep(3)">Calculer &#8594;</button>
   </div>
 </div>
 </div>
 
-<!-- Step 4: Estimation -->
-<div class="step" id="step4">
+<!-- Step 3: Estimation -->
+<div class="step" id="step3">
 <div class="card">
-  <h2 class="card-title">4. Estimation de vos impots</h2>
+  <h2 class="card-title">3. Estimation de vos impots</h2>
   <p class="card-subtitle">Annee d'imposition 2025</p>
   <div id="resultatsContent"></div>
   <div class="btn-row">
-    <button class="btn btn-secondary" onclick="goToStep(3)">&#8592; Modifier</button>
-    <button class="btn btn-primary" onclick="goToStep(5)">Credits manques ? &#8594;</button>
+    <button class="btn btn-secondary" onclick="goToStep(2)">&#8592; Modifier</button>
+    <button class="btn btn-primary" onclick="navigateToStep(4)">Credits manques ? &#8594;</button>
   </div>
 </div>
 </div>
 
-<!-- Step 5: Credits manques -->
-<div class="step" id="step5">
+<!-- Step 4: Credits manques -->
+<div class="step" id="step4">
 <div class="card">
-  <h2 class="card-title">5. Credits et deductions a verifier</h2>
+  <h2 class="card-title">4. Credits et deductions a verifier</h2>
   <p class="card-subtitle">Economies potentielles identifiees pour 2025</p>
   <div id="creditsManquesContent"></div>
   <div class="btn-row">
-    <button class="btn btn-secondary" onclick="goToStep(4)">&#8592; Resultats</button>
-    <button class="btn btn-primary" onclick="goToStep(6)">Recommandation &#8594;</button>
+    <button class="btn btn-secondary" onclick="goToStep(3)">&#8592; Resultats</button>
+    <button class="btn btn-primary" onclick="navigateToStep(5)">Recommandation &#8594;</button>
   </div>
 </div>
 </div>
 
-<!-- Step 6: Recommandation -->
-<div class="step" id="step6">
+<!-- Step 5: Recommandation -->
+<div class="step" id="step5">
 <div class="card">
-  <h2 class="card-title">6. Notre recommandation</h2>
+  <h2 class="card-title">5. Notre recommandation</h2>
   <p class="card-subtitle">DIY ou professionnel?</p>
   <div id="recoContent"></div>
   <div class="btn-row no-print">
@@ -626,11 +625,10 @@ const TAX = {
 let currentStep = 1;
 const STEPS = [
   { num: 1, label: 'Profil' },
-  { num: 2, label: 'Releves' },
-  { num: 3, label: 'Deductions' },
-  { num: 4, label: 'Estimation' },
-  { num: 5, label: 'Credits' },
-  { num: 6, label: 'Verdict' }
+  { num: 2, label: 'Deductions' },
+  { num: 3, label: 'Estimation' },
+  { num: 4, label: 'Credits' },
+  { num: 5, label: 'Verdict' }
 ];
 
 // ========== INIT ==========
@@ -651,30 +649,61 @@ function setupListeners() {
 }
 
 // ========== NAVIGATION ==========
+let stepErrors = new Set();
+
 function renderProgressBar() {
   const bar = document.getElementById('progressBar');
   let html = '';
   STEPS.forEach((s, i) => {
-    const cls = s.num < currentStep ? 'done' : s.num === currentStep ? 'active' : '';
-    html += `<div class="progress-step ${cls}"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`;
+    let cls = '';
+    if (s.num === currentStep) cls = 'active';
+    else if (s.num < currentStep) cls = 'done';
+    if (stepErrors.has(s.num)) cls += ' error';
+    html += `<div class="progress-step ${cls}" onclick="navigateToStep(${s.num})" title="Aller a l'etape ${s.num}: ${s.label}"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`;
     if (i < STEPS.length - 1) {
-      html += `<div class="progress-line ${s.num < currentStep ? 'done' : ''}"></div>`;
+      let lineCls = s.num < currentStep ? 'done' : '';
+      if (stepErrors.has(s.num)) lineCls = 'error';
+      html += `<div class="progress-line ${lineCls}"></div>`;
     }
   });
   bar.innerHTML = html;
 }
 
+function navigateToStep(n) {
+  // Retour en arriere : toujours permis
+  if (n < currentStep) {
+    goToStep(n);
+    return;
+  }
+  // Meme etape : rien a faire
+  if (n === currentStep) return;
+  // Avancer : valider les etapes requises
+  if (!validateForward(n)) return;
+  goToStep(n);
+}
+
+function validateForward(target) {
+  // L'etape 1 doit etre valide pour aller au-dela
+  if (target >= 2 && !validateStep1()) {
+    stepErrors.add(1);
+    renderProgressBar();
+    return false;
+  }
+  stepErrors.delete(1);
+  return true;
+}
+
 function goToStep(n) {
-  if (n === 2 && currentStep === 1 && !validateStep1()) return;
-  if (n === 4 && currentStep === 3) calculateTaxes();
-  if (n === 5) generateMissedCredits();
-  if (n === 6) generateRecommendation();
-  if (n === 2) generateReleves();
-  if (n === 3) updateReerMax();
+  // Generer le contenu dynamique des etapes si necessaire
+  if (n >= 2) { generateReleves(); updateReerMax(); }
+  if (n >= 3) calculateTaxes();
+  if (n >= 4) generateMissedCredits();
+  if (n >= 5) generateRecommendation();
 
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
   document.getElementById('step' + n).classList.add('active');
   currentStep = n;
+  stepErrors.delete(n);
   renderProgressBar();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
